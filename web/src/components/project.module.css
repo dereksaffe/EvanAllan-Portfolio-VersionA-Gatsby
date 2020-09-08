@@ -9,7 +9,7 @@
 
 .mainImage {
   position: relative;
-  background: #eee;
+  background: var(--color-peach);
   padding-bottom: calc(9 / 16 * 100%);
 
   @nest & img {
