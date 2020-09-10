@@ -22,7 +22,7 @@ function Project (props) {
           </div>
         </div>
 
-        props.imagesGallery && imagesGallery.asset && (
+
           <div className={styles.mainImage}>
           <img
             src={imageUrlFor(buildImageObj(mainImage))
@@ -33,7 +33,7 @@ function Project (props) {
             alt={imagesGallery.alt}
           />
         </div>
-        )
+
 
       </Container>
     </article>

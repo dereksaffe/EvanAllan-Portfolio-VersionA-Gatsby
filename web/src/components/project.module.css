@@ -23,6 +23,25 @@
   }
 }
 
+.imagesGallery {
+  position: relative;
+  background: var(--color-peach);
+  padding-bottom: calc(9 / 16 * 100%);
+  display: flex;
+  overflow-x: auto;
+
+
+  @nest & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    object-fit: cover;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
