@@ -8,77 +8,38 @@ import Layout from '../containers/layout'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanitySampleProject(id: {eq: $id}) {
-      id
-      publishedAt
-      categories {
+    sampleProject:  sanitySampleProject (id: {eq: $id}) {
+    title
+    mainImage {
+      _key
+      _type
+      caption
+      alt
+      asset {
+        url
+        path
         _id
-        title
-      }
-      relatedProjects {
-        title
-        _id
-        slug {
-          current
-        }
-      }
-      mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
-        asset {
-          _id
-        }
-        alt
-      }
-      title
-      slug {
-        current
-      }
-      _rawBody
-      members {
-        _key
-        person {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-        roles
       }
     }
+     imagesGallery {
+      _key
+      _type
+      asset {
+       url
+        _id
+        path
+      }
+    }
+    id
+    slug {
+      _key
+      _type
+      current
+    }
+        _rawBody
   }
+  }
+
 `
 
 const ProjectTemplate = props => {

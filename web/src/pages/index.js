@@ -12,18 +12,16 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
 export const query = graphql`
+
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"})
+    {
       title
       description
       keywords
-    }
-    projects: allSanitySampleProject(
-      limit: 6
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-    ) {
-      edges {
+     }
+      projects: allSanitySampleProject {
+          edges {
         node {
           id
           mainImage {
@@ -49,14 +47,16 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
-          slug {
-            current
-          }
+           slug {
+          _key
+          _type
+          current
+        }
         }
       }
+       }
     }
-  }
+
 `
 
 const IndexPage = props => {
@@ -72,9 +72,9 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+   ? mapEdgesToNodes(data.projects)
+      /*.filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture) */
     : []
 
   if (!site) {

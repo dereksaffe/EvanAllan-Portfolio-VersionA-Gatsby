@@ -9,17 +9,18 @@ async function createProjectPages (graphql, actions) {
   const {createPage} = actions
   const result = await graphql(`
     {
-      allSanitySampleProject(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}) {
-        edges {
-          node {
-            id
-            publishedAt
-            slug {
-              current
-            }
-          }
+      allSanitySampleProject {
+          edges {
+        node {
+          id
+           slug {
+          _key
+          _type
+          current
+        }
         }
       }
+       }
     }
   `)
 
@@ -28,7 +29,6 @@ async function createProjectPages (graphql, actions) {
   const projectEdges = (result.data.allSanitySampleProject || {}).edges || []
 
   projectEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
