@@ -1,0 +1,42 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.aboutPageContainer {
+
+    padding: 5em;
+    display: grid;
+    grid-gap: 6rem;
+    /* Size of items defined inside container */
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "bio pic awards awards"
+                          "contact contact awards awards"
+                          ". . awards awards";
+      }
+
+
+.mainContent {
+ align-items: center;
+}
+
+.bio{
+  grid-area: bio;
+}
+
+.pic {
+  grid-area: pic;
+}
+.contact{
+  grid-area: contact;
+}
+.awards{
+  grid-area: awards;
+}
+
+.profileImage {
+  position: relative;
+  background: var(--color-peach);
+  padding-bottom: calc(9 / 16 * 100%);
+
+
+}

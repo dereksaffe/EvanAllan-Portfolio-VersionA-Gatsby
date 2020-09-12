@@ -12,7 +12,6 @@ import styles from './project.module.css'
 function Project (props) {
   const {_rawBody, title, imagesGallery, categories, mainImage, members, publishedAt, relatedProjects} = props
   return (
-
    <article className={styles.root}>
       <Container>
         <div className={styles.grid}>

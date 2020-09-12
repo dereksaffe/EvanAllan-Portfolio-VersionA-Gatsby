@@ -27,7 +27,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link to='/archive/' onMouseOver={() => setText('About Evan')}
+            <Link to='/about/' onMouseOver={() => setText('About Evan')}
                                  onMouseLeave={() => setText('A')}>{text}</Link>
           </li>
         </ul>
