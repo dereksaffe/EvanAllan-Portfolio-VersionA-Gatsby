@@ -7,6 +7,12 @@
   composes: responsiveTitle1 from './typography.module.css';
 }
 
+.wrapper{
+  display:flex;
+  margin: 3em;
+  flex-direction: row;
+  align-items: center;
+}
 .mainImage {
   position: relative;
   background: var(--color-peach);
@@ -20,6 +26,7 @@
     height: 100%;
     vertical-align: top;
     object-fit: cover;
+    margin: 2em;
   }
 }
 
@@ -27,19 +34,18 @@
   position: relative;
   background: var(--color-peach);
   padding-bottom: calc(9 / 16 * 100%);
+  overflow-x: scroll;
   display: flex;
-  overflow-x: auto;
+      margin: 2em;
 
 
-  @nest & img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    object-fit: cover;
-  }
+   padding: 5px;
+   justify-content: space-between;
+
+   @nest & img {
+         margin: 2rem;
+   }
+
 }
 
 .grid {

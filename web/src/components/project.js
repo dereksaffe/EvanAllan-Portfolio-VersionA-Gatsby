@@ -10,31 +10,29 @@ import RoleList from './role-list'
 import styles from './project.module.css'
 
 function Project (props) {
-  const {_rawBody, title, imagesGallery, categories, mainImage, members, publishedAt, relatedProjects} = props
+  const {_rawBody, title, _rawImagesGallery, categories, mainImage, members, publishedAt, relatedProjects} = props
   return (
    <article className={styles.root}>
-      <Container>
-        <div className={styles.grid}>
+      <div className={styles.wrapper}>
+
           <div className={styles.mainContent}>
-            <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
-        </div>
 
 
-          <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
+        <div className={styles.imagesGallery}>
+          { _rawImagesGallery.map (image => {
+               return (<img
+            src={imageUrlFor(buildImageObj(image))
+              .width(500)
+              .height(Math.floor((9 / 16) * 800))
               .fit('crop')
               .url()}
-            alt={imagesGallery.alt}
-          />
-        </div>
+            alt={image.alt}  />)}) }
+          </div>
+    </div>
 
 
-      </Container>
     </article>
   )
 }

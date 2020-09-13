@@ -31,6 +31,7 @@ export const query = graphql`
       }
     }
     id
+    _rawImagesGallery
     slug {
       _key
       _type
