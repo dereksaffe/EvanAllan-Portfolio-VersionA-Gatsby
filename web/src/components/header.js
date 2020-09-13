@@ -4,6 +4,8 @@ import Icon from './icon'
 import {cn} from '../lib/helpers'
 
 import styles from './header.module.css'
+import { responsiveTitle3 } from '../components/typography.module.css'
+
 
 const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
 
@@ -26,8 +28,8 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
 
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
-          <li>
-            <Link to='/about/' onMouseOver={() => setText('About Evan')}
+          <li >
+            <Link className={styles.aBold} to='/about/' onMouseOver={() => setText('About Evan')}
                                  onMouseLeave={() => setText('A')}>{text}</Link>
           </li>
         </ul>

@@ -37,6 +37,10 @@
   }
 }
 
+.aBold{
+  font-weight: 800;
+}
+
 .toggleNavButton {
   appearance: none;
   font-size: 25px;

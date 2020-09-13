@@ -26,7 +26,7 @@ function Project (props) {
             src={imageUrlFor(buildImageObj(image))
               .width(600)
               .height(Math.floor((9 / 16) * 1000))
-              .fit('crop')
+              .fit('clip')
               .url()}
             alt={image.alt}  />)}) }
           </div>
