@@ -10,8 +10,8 @@
 
 .leadMediaThumb {
   position: relative;
-  padding-bottom: 66.666%;
-  background: #eee;
+  padding-bottom: 75%;
+  background: black;
 
   @nest & img {
     position: absolute;
@@ -21,13 +21,48 @@
     height: 100%;
     object-fit: cover;
   }
+
+
 }
+
+.overlay {
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+  transition: .3s ease;
+  opacity:0;
+  font-size:1.25rem;
+  padding: 0;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.05rem;
+
+
+
+  @nest & span {
+    color: white;
+  }
+}
+
+
+
+/* When you mouse over the container, fade in the overlay title */
+.leadMediaThumb:hover .overlay {
+  opacity: 1;
+}
+
+.leadMediaThumb:hover img{
+    opacity: .85;
+    transition: .3s ease;
+
+}
+
 
 .title {
   text-align: center;
   @media (hover: hover) {
     @nest .root:hover & {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 }
@@ -38,7 +73,7 @@
   }
 
   @nest & strong {
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

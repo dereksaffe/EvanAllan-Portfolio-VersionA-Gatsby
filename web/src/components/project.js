@@ -24,8 +24,8 @@ function Project (props) {
           { _rawImagesGallery.map (image => {
                return (<img
             src={imageUrlFor(buildImageObj(image))
-              .width(500)
-              .height(Math.floor((9 / 16) * 800))
+              .width(700)
+              .height(Math.floor((9 / 16) * 1000))
               .fit('crop')
               .url()}
             alt={image.alt}  />)}) }

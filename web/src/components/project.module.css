@@ -9,9 +9,12 @@
 
 .wrapper{
   display:flex;
-  margin: 3em;
+  margin-left: 2em;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+
+
 }
 .mainImage {
   position: relative;
@@ -26,24 +29,22 @@
     height: 100%;
     vertical-align: top;
     object-fit: cover;
-    margin: 2em;
+    margin: 1em;
   }
 }
 
 .imagesGallery {
   position: relative;
   background: var(--color-peach);
-  padding-bottom: calc(9 / 16 * 100%);
+  /*padding-bottom: calc(9 / 16 * 100%); */
   overflow-x: scroll;
   display: flex;
-      margin: 2em;
-
-
-   padding: 5px;
    justify-content: space-between;
+   margin: 3em;
 
    @nest & img {
-         margin: 2rem;
+    margin: 1rem;
+    align-items:center;
    }
 
 }
@@ -59,7 +60,10 @@
 }
 
 .mainContent {
-  @nest & a {
+
+align-items: center;
+
+@nest & a {
     color: var(--color-accent);
 
     @media (hover: hover) {

@@ -7,6 +7,9 @@ const typography = new Typography({
   overrideThemeStyles: () => ({
     'a:hover,a:active': {
       boxShadow: 'null'
+    },
+    'a': {
+      color: 'black'
     }
   })
 })

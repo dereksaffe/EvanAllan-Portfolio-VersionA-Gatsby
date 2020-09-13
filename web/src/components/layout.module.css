@@ -3,7 +3,8 @@
 
 .content {
   background: var(--color-peach);
-  min-height: calc(100% - 73px - 120px);
+  /*min-height: calc(100% - 73px - 120px);*/
+  max-height:87vh;
 
   @media (--media-min-small) {
     min-height: calc(100% - 88px - 150px);
@@ -11,30 +12,21 @@
 }
 
 .footer {
-  border-top: 1px solid var(--color-very-light-gray);
+    box-sizing: border-box;
+    padding: 2em;
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    color:black;
+    display: flex;
+    justify-content: space-between;
 
-  @nest & a {
-    color: inherit;
-    text-decoration: none;
-
-    @media (hover: hover) {
-      @nest &:hover {
-        color: var(--color-accent);
-      }
+    a{
+      color: black !important;
     }
-  }
 }
 
-.footerWrapper {
-  box-sizing: border-box;
-  max-width: 960px;
-  padding: 4.5em 1.5em 1.5em;
-  margin: 0 auto;
 
-  @media (--media-min-small) {
-    padding: 6em 2em 2em;
-  }
-}
 
 .companyAddress {
   text-align: center;
