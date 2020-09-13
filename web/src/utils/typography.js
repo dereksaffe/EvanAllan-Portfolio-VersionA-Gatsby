@@ -10,6 +10,17 @@ const typography = new Typography({
     },
     'a': {
       color: 'black'
+    },
+    'img': {
+      marginLeft: 'null',
+      marginRight: 'null',
+      marginTop: 'null',
+      margin: 'null',
+      paddingBottom: 'null',
+      paddingLeft: 'null',
+      paddingRight: 'null',
+      paddingTop: 'null',
+      marginBottom: 'null'
     }
   })
 })

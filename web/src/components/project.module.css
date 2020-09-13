@@ -44,7 +44,6 @@
    white-space:nowrap
 
    @nest & img {
-    margin: 1rem;
     align-items:center;
        justify-content: space-between;
        display: flex;
@@ -52,6 +51,12 @@
 
    }
 
+}
+
+.imagesGallery img{
+      margin-left: 5rem;
+      margin-top: 2rem;
+      padding-right:1rem;
 }
 
 .grid {
