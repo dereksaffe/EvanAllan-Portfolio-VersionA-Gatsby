@@ -24,10 +24,8 @@ function Project (props) {
           { _rawImagesGallery.map (image => {
                return (<img
             src={imageUrlFor(buildImageObj(image))
-              .width(400)
-              .height(500)
               .fit('clip')
-              .quality(100)
+              .quality(60)
               .url()}
             alt={image.alt}  />)}) }
           </div>
