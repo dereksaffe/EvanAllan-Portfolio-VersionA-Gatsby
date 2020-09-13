@@ -26,10 +26,12 @@
 }
 
 .overlay {
+    background: black;
+
   position: absolute;
   bottom: 50%;
   width: 100%;
-  transition: .3s ease;
+  transition: .2s ease;
   opacity:0;
   font-size:1.25rem;
   padding: 0;
@@ -52,8 +54,8 @@
 }
 
 .leadMediaThumb:hover img{
-    opacity: .85;
-    transition: .3s ease;
+    opacity: .9;
+    transition: .2s ease;
 
 }
 
