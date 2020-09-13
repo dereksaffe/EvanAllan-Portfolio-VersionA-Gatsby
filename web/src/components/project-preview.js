@@ -15,7 +15,7 @@ function ProjectPreview (props) {
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
               .fit('clip')
-              .quality(50)
+              .quality(40)
               .url()}
             alt={props.mainImage.alt}
           />
