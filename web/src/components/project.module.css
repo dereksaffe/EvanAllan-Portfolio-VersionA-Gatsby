@@ -37,14 +37,19 @@
   position: relative;
   background: var(--color-peach);
   /*padding-bottom: calc(9 / 16 * 100%); */
-  overflow-x: scroll;
   display: flex;
    justify-content: space-between;
-   margin: 3em;
+  padding: 3.2em;
+
+   white-space:nowrap
 
    @nest & img {
     margin: 1rem;
     align-items:center;
+       justify-content: space-between;
+       display: flex;
+
+
    }
 
 }

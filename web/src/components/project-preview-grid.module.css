@@ -3,6 +3,8 @@
 
 .root {
   margin: 2em 0 4em;
+  height: 70vh;
+  width: auto;
 }
 
 .headline {
@@ -23,7 +25,7 @@
   grid-gap: 2em;
 
   @media (--media-min-small) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   @media (--media-min-medium) {
