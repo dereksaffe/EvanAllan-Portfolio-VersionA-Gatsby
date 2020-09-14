@@ -5,9 +5,7 @@ html {
  font-family: alegreya;
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-
   overflow-y: hidden;
-
 }
 
 body {
