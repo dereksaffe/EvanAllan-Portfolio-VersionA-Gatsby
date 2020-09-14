@@ -6,6 +6,7 @@ import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
+import styles from './archive.module.css'
 
 import {responsiveTitle1} from '../components/typography.module.css'
 
@@ -63,10 +64,10 @@ const ArchivePage = props => {
   return (
     <Layout>
       <SEO title='Archive' />
-      <Container>
+        <div className={styles.archiveContainer}>
         <h1 className={responsiveTitle1}>Projects</h1>
         {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
-      </Container>
+      </div>
     </Layout>
   )
 }

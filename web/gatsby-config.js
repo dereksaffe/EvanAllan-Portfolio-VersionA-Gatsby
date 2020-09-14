@@ -26,6 +26,7 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd && token
       }
-    }
+    },
+    `gatsby-plugin-transition-link`
   ]
 }

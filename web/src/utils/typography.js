@@ -20,7 +20,8 @@ const typography = new Typography({
       paddingLeft: 'null',
       paddingRight: 'null',
       paddingTop: 'null',
-      marginBottom: 'null'
+      marginBottom: 'null',
+      width: 'null'
     }
   })
 })

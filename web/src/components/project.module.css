@@ -13,6 +13,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  overflow-x: scroll;
+
 
 
 }
@@ -41,7 +43,6 @@
    justify-content: space-between;
   padding: 3.2em;
   max-height: 90vh;
-
    white-space:nowrap
 
    @nest & img {
