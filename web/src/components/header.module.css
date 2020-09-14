@@ -43,11 +43,12 @@
   left: 0;
   position: fixed;
   padding: 1em;
+  margin-right:1em;
 }
 
 .nextButton{
    bottom: 0;
-   right: 0;
+   right: 1rem;
    position: fixed;
    padding: 1em;
 }

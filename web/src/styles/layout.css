@@ -5,6 +5,8 @@ html {
  font-family: alegreya;
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
+    overflow-y: hidden;
+
 }
 
 body {
@@ -12,6 +14,7 @@ body {
   background: var(--color-peach);
   color: var(--color-black);
   margin: 0;
+
 }
 
 html,

@@ -5,6 +5,8 @@
   background: var(--color-peach);
   /*min-height: calc(100% - 73px - 120px);*/
   max-height:100vh;
+      overflow-y: hidden
+
 
   @media (--media-min-small) {
     min-height: calc(100% - 88px - 150px);
