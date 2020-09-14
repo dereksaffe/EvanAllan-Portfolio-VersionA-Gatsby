@@ -4,7 +4,7 @@
 .content {
   background: var(--color-peach);
   /*min-height: calc(100% - 73px - 120px);*/
-  max-height:87vh;
+  max-height:100vh;
 
   @media (--media-min-small) {
     min-height: calc(100% - 88px - 150px);
@@ -19,7 +19,6 @@
     color:black;
     display: flex;
     justify-content: space-between;
-    background: (0, 0, 0, 0.1)
 
     a{
       color: black !important;
