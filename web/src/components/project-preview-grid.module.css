@@ -16,41 +16,44 @@
   margin: 2rem 0;
 }
 
-.grid {
+
+ .grid {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  /*grid-template-areas: "1 1 . ."
-                       "1 1 2 2"
-                       "3 2 . .";
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr; */
-  grid-gap: 3em;
 
-  grid-template-columns: 1fr;
+  display: grid;
+  grid-template-areas: "a a . ."
+                       ". . b b"
+                       "c c . .";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 3em;
 
   @media (--media-min-small) {
     grid-template-columns: 1fr;
-  }
+   }
 
   @media (--media-min-medium) {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+     }
 
-/*.grid li:first-child{
-  grid-area: 1;
-}
-
-.grid li:nth-child(2) {
-  grid-area: 2;
 }
 
 
-.grid li:nth-child(3) {
-  grid-area: 3;
-}*/
+
+ .grid:first-child{
+  grid-area: a;
+}
+
+ .grid:nth-child(2){
+  grid-area: b;
+}
+
+
+.grid:nth-child(3) {
+  grid-area: c;
+}
 
 .browseMoreNav {
   composes: small from './typography.module.css';

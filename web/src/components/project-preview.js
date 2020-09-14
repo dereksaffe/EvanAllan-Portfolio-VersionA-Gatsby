@@ -15,7 +15,7 @@ function ProjectPreview (props) {
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
               .fit('clip')
-              .quality(40)
+              .quality(20)
               .url()}
             alt={props.mainImage.alt}
           />
@@ -24,11 +24,6 @@ function ProjectPreview (props) {
           <span>{props.title}</span>
         </div>
       </div>
-      {props._rawExcerpt && (
-        <div className={styles.excerpt}>
-          <BlockText blocks={props._rawExcerpt} />
-        </div>
-      )}
     </Link>
   )
 }

@@ -9,11 +9,13 @@ import { responsiveTitle3 } from '../components/typography.module.css'
 
 const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
 
-  const [text, setText] = useState('A');
+  const [aboutText, setAbout] = useState('A');
 
-  const setContent = (text) => {
+   const [projectText, setProject] = useState('E')
+
+  /*const setAbout = (text) => {
     setText(text);
-  }
+  }*/
 
 
   return (<div className={styles.root}>
@@ -28,13 +30,26 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
 
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
-          <li >
-            <Link className={styles.aBold} to='/about/' onMouseOver={() => setText('About Evan')}
-                                 onMouseLeave={() => setText('A')}>{text}</Link>
+          <li>
+            <Link className={styles.aBold} to='/about/' onMouseOver={() => setAbout('About Evan')}
+                                 onMouseLeave={() => setAbout('A')}>{aboutText}</Link>
           </li>
+
+
         </ul>
       </nav>
+      <nav className={cn(styles.nav, showNav && styles.showNav)}>
+      <div className={styles.evansProjectText}>
+        <Link className={styles.aBold} to='/archive/' onMouseOver={() => setProject("Evan's Projects")}
+          onMouseLeave={() => setProject('E')}>{projectText}</Link>
+      </div>
+      <div className={styles.nextButton}>
+        <h3 className={styles.aBold}>Next</h3>
+      </div>
+      </nav>
+
     </div>
+
   </div> )
 }
 

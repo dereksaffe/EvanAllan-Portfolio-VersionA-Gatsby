@@ -37,6 +37,21 @@
   }
 }
 
+
+.evansProjectText{
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  padding: 1em;
+}
+
+.nextButton{
+   bottom: 0;
+   right: 0;
+   position: fixed;
+   padding: 1em;
+}
+
 .aBold{
   font-weight: 800;
 }
