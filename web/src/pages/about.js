@@ -87,7 +87,7 @@ const AboutPage = props => {
             <div id={styles.pic}>
               <img
                 src={imageUrlFor(buildImageObj(site._rawProfileImage))
-                  .quality(50)
+                  .quality(80)
                   .fit('crop')
                   .url()}
                 alt={site._rawProfileImage.alt}/>

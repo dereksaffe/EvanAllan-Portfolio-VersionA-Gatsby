@@ -10,7 +10,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: auto;
       grid-template-areas: "bio pic awards awards"
-                          "contact contact awards awards"
+                          "contact . awards awards"
                           ". . awards awards";
       }
 
