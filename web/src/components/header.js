@@ -4,7 +4,6 @@ import Icon from './icon'
 import {cn} from '../lib/helpers'
 
 import styles from './header.module.css'
-import { responsiveTitle3 } from '../components/typography.module.css'
 
 
 const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {

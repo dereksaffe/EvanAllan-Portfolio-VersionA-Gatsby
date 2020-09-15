@@ -9,7 +9,7 @@
 
 .wrapper{
   display:flex;
-  margin-left: 2em;
+  padding-left: 2em;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

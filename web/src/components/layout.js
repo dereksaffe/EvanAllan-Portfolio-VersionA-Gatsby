@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
-import {Link} from 'gatsby'
+import React from 'react'
 
 import Header from './header'
 
 import '../styles/layout.css'
 import styles from './layout.module.css'
-import {responsiveTitle3} from '../components/typography.module.css'
 
 const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => {
   return (
