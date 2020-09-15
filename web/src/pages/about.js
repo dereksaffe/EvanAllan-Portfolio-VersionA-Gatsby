@@ -96,6 +96,7 @@ const AboutPage = props => {
             <div className={styles.contact}>
               <BlockText blocks={site._rawContact || []} />
             </div>
+
             <div className={styles.awards}>
               <BlockText blocks={site._rawAwards || []} />
             </div>

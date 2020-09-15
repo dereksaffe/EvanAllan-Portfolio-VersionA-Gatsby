@@ -25,7 +25,7 @@ function Project (props) {
                return (<img
             src={imageUrlFor(buildImageObj(image))
               .fit('clip')
-              .quality(60)
+              .quality(80)
               .url()}
             alt={image.alt}  />)}) }
           </div>
