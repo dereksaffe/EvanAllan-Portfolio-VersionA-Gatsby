@@ -3,7 +3,7 @@
 
 .root {
   margin: 2em 0 4em;
-  height: 70vh;
+  height: 100vh;
   width: auto;
 }
 
@@ -22,36 +22,52 @@
   padding: 0;
   list-style: none;
 
-  display: grid;
-  grid-template-areas: "a . ."
-                       ". . b"
-                       "c . .";
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+
   grid-gap: 3em;
 
-  @media (--media-min-small) {
+    display: grid;
+    grid-template-areas: "a . b"
+                         ". c b"
+                         ;
+    grid-template-columns: 1.25fr 1fr 1.25fr;
+    grid-template-rows: auto;
+
+  /*@media (--media-min-small) {
     grid-template-columns: 1fr;
    }
 
   @media (--media-min-medium) {
     grid-template-columns: auto;
-     }
+     }*/
+
+}
+
+.gridContainer{
+  /*width: 100vw;*/
+
+}
+
+.flexGrid{
+  display: flex;
+  justify-content: space-around;
+}
+
+.grid li{
+  display:flex;
 
 }
 
 
-
- .grid:first-child{
+ .grid li:first-child{
   grid-area: a;
 }
 
- .grid:nth-child(2){
+ .grid li:nth-child(2){
   grid-area: b;
 }
 
 
-.grid:nth-child(3) {
+.grid li:nth-child(3) {
   grid-area: c;
 }
 

@@ -7,7 +7,7 @@ import styles from './project-preview-grid.module.css'
 function ProjectPreviewGrid (props) {
   return (
     <div className={styles.root}>
-
+      <div className={styles.gridContainer}>
       <ul className={styles.grid}>
         {props.nodes &&
           props.nodes.map(node => (
@@ -21,6 +21,7 @@ function ProjectPreviewGrid (props) {
           <Link to={props.browseMoreHref}></Link>
         </div>
       )}
+      </div>
     </div>
   )
 }

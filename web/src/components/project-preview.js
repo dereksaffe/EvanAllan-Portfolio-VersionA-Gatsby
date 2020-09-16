@@ -15,13 +15,13 @@ function ProjectPreview (props) {
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
               .fit('clip')
-              .quality(20)
+              .quality(60)
               .url()}
             alt={props.mainImage.alt}
           />
         )}
         <div className={styles.overlay}>
-          <span>{props.title}</span>
+          {props.title}
         </div>
       </div>
     </Link>
