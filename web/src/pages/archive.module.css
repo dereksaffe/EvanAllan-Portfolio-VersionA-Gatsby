@@ -3,8 +3,8 @@
 
 .archiveContainer{
    height: 100vh;
- display: flex;
- justify-content: flex-start;
+   flex-direction: row;
+
 
 box-sizing: border-box;
 /*max-width: 960px;*/
@@ -35,7 +35,6 @@ margin-top: 5em;
 
 .projectContainer {
   display:flex;
-  justify-content: flex-start;
 
 }
 
@@ -43,7 +42,7 @@ margin-top: 5em;
   display: none;
 position:absolute;
 z-index: 1;
-transform: translate(3%);
+transform: translate(100%);
 }
 
 .projectItem{

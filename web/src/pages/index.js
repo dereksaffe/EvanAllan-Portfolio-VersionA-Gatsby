@@ -23,7 +23,9 @@ export const query = graphql`
       description
       keywords
      }
-      projects: allSanitySampleProject {
+      projects: allSanitySampleProject
+      (limit: 3)
+      {
           edges {
         node {
           id
