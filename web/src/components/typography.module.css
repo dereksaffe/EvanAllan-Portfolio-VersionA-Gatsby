@@ -119,7 +119,7 @@
 
   @media (--media-min-medium) {
     font-size: var(--font-title2-size);
-    line-height: var(--font-title2-line-height);
+    line-height: 0;
   }
 
 
