@@ -3,7 +3,8 @@
 
 .archiveContainer{
    height: 100vh;
-
+ display: flex;
+ justify-content: flex-start;
 
 box-sizing: border-box;
 /*max-width: 960px;*/
@@ -18,7 +19,7 @@ margin-top: 5em;
 
 .projectContainer img{
  display:none;
- max-height: 40%;
+ max-height: 60%;
 
 }
 
@@ -29,7 +30,7 @@ margin-top: 5em;
 }
 
 .projectContainer{
-  margin: 0 !important;
+ margin-right: 2em;
 }
 
 .projectContainer {
@@ -39,10 +40,9 @@ margin-top: 5em;
 }
 
 .projectContainer:hover img{
-  display: inline;
+  display: none;
 position:absolute;
 z-index: 1;
- max-width: 50%;
 transform: translate(3%);
 }
 
