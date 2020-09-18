@@ -2,12 +2,13 @@
 
 
 .archiveContainer{
+   height: 100vh;
+
 
 box-sizing: border-box;
-max-width: 960px;
+/*max-width: 960px;*/
 padding: 1.5em;
-margin: 0 auto;
-
+margin-top: 5em;
 
 @media (--media-min-small) {
   padding: 2em;
@@ -15,4 +16,36 @@ margin: 0 auto;
 
 }
 
+.projectContainer img{
+ display:none;
+ max-height: 40%;
 
+}
+
+.projectContainer p{
+  z-index: 999;
+  position: relative;
+
+}
+
+.projectContainer{
+  margin: 0 !important;
+}
+
+.projectContainer {
+  display:flex;
+  justify-content: flex-start;
+
+}
+
+.projectContainer:hover img{
+  display: inline;
+position:absolute;
+z-index: 1;
+ max-width: 50%;
+transform: translate(3%);
+}
+
+.projectItem{
+  margin-bottom: 1em;
+}

@@ -1,17 +1,32 @@
 import React from 'react'
 import {graphql} from 'gatsby'
+import { Link } from 'gatsby'
+
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
+import ProjectPreview from '../components/project-preview'
+import { cn, buildImageObj } from '../lib/helpers'
+import { imageUrlFor } from '../lib/image-url'
+import {
+  mapEdgesToNodes,
+  filterOutDocsWithoutSlugs,
+  filterOutDocsPublishedInTheFuture
+} from '../lib/helpers'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 import styles from './archive.module.css'
 
-import {responsiveTitle1} from '../components/typography.module.css'
+import {responsiveTitle2} from '../components/typography.module.css'
 
 export const query = graphql`
   query ArchivePageQuery {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"})
+    {
+      title
+      description
+      keywords
+     }
     projects: allSanitySampleProject {
           edges {
         node {
@@ -51,7 +66,8 @@ export const query = graphql`
 `
 
 const ArchivePage = props => {
-  const {data, errors} = props
+  const { data, errors } = props
+
   if (errors) {
     return (
       <Layout>
@@ -59,17 +75,49 @@ const ArchivePage = props => {
       </Layout>
     )
   }
-  const projectNodes =
-    data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+
+  const site = (data || {}).site
+  const projectNodes = (data || {}).projects
+    ? mapEdgesToNodes(data.projects)
+    /*.filter(filterOutDocsWithoutSlugs)
+    .filter(filterOutDocsPublishedInTheFuture) */
+    : []
+
+
+
   return (
     <Layout>
-      <SEO title='Archive' />
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <Container>
         <div className={styles.archiveContainer}>
-        <h1 className={responsiveTitle1}>Projects</h1>
-        {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
-      </div>
-    </Layout>
+          {projectNodes &&
+            projectNodes.map(node => (
+              <li className={styles.projectContainer} key={node.id}>
+                <Link className={styles.root} to={`/project/${node.slug.current}`}>
+
+
+                  <div  className={responsiveTitle2}>
+                    <p className={styles.projectItem}> {node.title} </p>
+                   </div>
+                  </Link>
+
+                {node.mainImage && node.mainImage.asset && (
+                  <img
+                    src={imageUrlFor(buildImageObj(node.mainImage))
+                      .fit('clip')
+                      .quality(40)
+                      .url()}
+                    alt={node.mainImage.alt}
+                  />
+                )}
+              </li>
+
+            ))}
+        </div>
+      </Container>
+   </Layout>
   )
 }
+
 
 export default ArchivePage
