@@ -32,8 +32,7 @@
 .overlay {
 
    position: absolute;
-
-  opacity:0;
+  display: none;
   font-size:1.5rem;
   padding: .3rem;
   text-align: center;
@@ -51,7 +50,7 @@
 
 /* When you mouse over the container, fade in the overlay title */
 .leadMediaThumb:hover .overlay {
-  opacity: 1;
+  display: block;
   transition: .2s;
   z-index: 999;
 }
