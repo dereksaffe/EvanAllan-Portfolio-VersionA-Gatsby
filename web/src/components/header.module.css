@@ -130,6 +130,18 @@
   }
 }
 
+.mobileNavItem{
+  @media (--media-min-small){
+    display: none !important;
+  }
+}
+
+.onlyDesktopNavItem{
+  @media (--media-max-small) {
+    display: none !important;
+  }
+}
+
 .showNav {
   display: block;
 

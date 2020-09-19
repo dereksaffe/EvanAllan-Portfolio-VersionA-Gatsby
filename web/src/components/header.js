@@ -30,8 +30,16 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link className={styles.aBold} to='/about/' onMouseOver={() => setAbout('About Evan')}
+            <Link className={cn(styles.aBold, styles.mobileNavItem)} to='/about/'>About Evan</Link>
+          </li>
+
+          <li>
+            <Link className={cn(styles.aBold, styles.onlyDesktopNavItem)} to='/about/' onMouseOver={() => setAbout('About Evan')}
                                  onMouseLeave={() => setAbout('A')}>{aboutText}</Link>
+          </li>
+
+          <li>
+            <Link className={cn(styles.aBold, styles.mobileNavItem)}  to='/archive/'>Evan's Projects</Link>
           </li>
 
 
