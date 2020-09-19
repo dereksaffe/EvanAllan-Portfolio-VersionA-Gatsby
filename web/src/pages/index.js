@@ -24,11 +24,12 @@ export const query = graphql`
       keywords
      }
       projects: allSanitySampleProject
-      (limit: 3)
+      (filter: {featured: {eq: true}})
       {
           edges {
         node {
           id
+          featured
           mainImage {
             crop {
               _key

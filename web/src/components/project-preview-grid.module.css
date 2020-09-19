@@ -23,14 +23,13 @@
   list-style: none;
 
 
-  grid-gap: 3em;
+  grid-gap: 1.2em;
 
     display: grid;
-    grid-template-areas: "a . b"
-                         ". c ."
-                         ". c ."
+    grid-template-areas: ". c b ."
+                         ". c a ."
                          ;
-    grid-template-columns: 1..25fr 1fr 1.25fr;
+    grid-template-columns: .25fr .25fr .2fr .05fr;
     grid-template-rows: auto;
 
   /*@media (--media-min-small) {
@@ -70,6 +69,8 @@
 
 .grid li:nth-child(3) {
   grid-area: c;
+  margin-top: 4em;
+
 }
 
 .browseMoreNav {

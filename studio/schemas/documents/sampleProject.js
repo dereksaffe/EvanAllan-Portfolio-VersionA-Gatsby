@@ -4,6 +4,9 @@ export default {
   name: 'sampleProject',
   title: 'Sample project',
   type: 'document',
+  initialValue: {
+    featured: false
+  },
   fields: [
     {
       name: 'title',
@@ -35,6 +38,11 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'projectPortableText'
+    },
+    {
+      name: 'featured',
+      type: 'boolean',
+      title: 'Featured Project on Home'
     }
   ],
   preview: {
