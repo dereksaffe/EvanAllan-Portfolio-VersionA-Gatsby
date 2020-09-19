@@ -26,8 +26,8 @@
   grid-gap: 1.2em;
 
     display: grid;
-    grid-template-areas: ". c b ."
-                         ". c a ."
+    grid-template-areas: ". a b ."
+                         ". a c ."
                          ;
     grid-template-columns: .25fr .25fr .2fr .05fr;
     grid-template-rows: auto;
