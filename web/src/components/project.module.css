@@ -10,10 +10,12 @@
 .wrapper{
   display:flex;
   padding-left: 2em;
+
+  @media (--media-min-medium){
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  overflow-x: scroll;
+  overflow-x: scroll;}
 
 
 
@@ -41,7 +43,8 @@
   /*padding-bottom: calc(9 / 16 * 100%); */
   display: flex;
    justify-content: space-between;
-  padding: 3.2em;
+
+   @media (--media-min-medium){ padding: 3.2em;
   max-height: 90vh;
    white-space:nowrap
 
@@ -50,9 +53,8 @@
        justify-content: space-between;
        display: flex;
 
-
    }
-
+   }
 }
 
 .imagesGallery img{
@@ -63,11 +65,13 @@
 }
 
 .grid {
-  display: grid;
+
+  @media (--media-min-medium) {
+    display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
 
-  @media (--media-min-medium) {
+
     grid-template-columns: 3fr 1fr;
   }
 }
