@@ -4,7 +4,7 @@
 .aboutPageContainer {
 
   @media (--media-max-small) {
-    padding: 4.5em .75em .4em .75em;
+    padding: 6.5em .75em .4em .75em;
   }
 
   @media (--media-min-medium){
