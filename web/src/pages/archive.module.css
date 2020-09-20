@@ -8,12 +8,10 @@
 
 box-sizing: border-box;
 /*max-width: 960px;*/
-padding: 1em;
+padding: 2em;
 margin-top: 2em;
 margin-left: 3em;
-@media (--media-min-small) {
-  padding: 2em;
-}
+
 
 }
 
@@ -24,7 +22,7 @@ margin-left: 3em;
 }
 
 .projectContainer p{
-  z-index: 999;
+  z-index: 1;
   position: relative;
 
 }
