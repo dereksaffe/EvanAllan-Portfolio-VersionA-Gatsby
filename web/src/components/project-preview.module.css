@@ -51,12 +51,12 @@
 /* When you mouse over the container, fade in the overlay title */
 .leadMediaThumb:hover .overlay {
   display: block;
-  transition: .2s;
+  transition: .3s;
   z-index: 999;
 }
 
 .leadMediaThumb:hover img{
-    transition: .2s;
+    transition: .3s;
   filter: brightness(85%);
 
 }

@@ -100,14 +100,14 @@
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
 
-
-    grid-template-columns: 3fr 1fr;
   }
 }
 
 .mainContent {
 
 align-items: center;
+max-width: 25vw;
+max-height: 55vh;
 
   @media(--media-max-small) {
    margin: 3em 1em .5em 1em;
