@@ -3,6 +3,11 @@
 
 .aboutPageContainer {
 
+  @media (--media-max-small) {
+    padding: 4.5em .75em .4em .75em;
+  }
+
+  @media (--media-min-medium){
     padding: 5em;
     display: grid;
     grid-gap: 6rem;
@@ -13,7 +18,7 @@
                           "contact . awards awards"
                           ". . awards awards";
       }
-
+    }
 
 .mainContent {
  align-items: center;
