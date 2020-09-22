@@ -29,10 +29,15 @@ margin-left: 3em;
 
 .projectContainer li{
   margin: 0 !important;
+  display: flex;
+
 }
+
 
 .projectContainer{
  margin-right: 2em;
+ text-decoration: none;
+
 }
 
 .projectContainer {
@@ -40,11 +45,12 @@ margin-left: 3em;
 }
 
 .projectContainer:hover img{
- @media (--media-min-medium){ display: block;}
-position: absolute;
-z-index: 1;
-transform: translate(100%);
-transition: 2s ease-in;
+   @media (--media-min-medium){ display: block;}
+  position: absolute;
+  z-index: 1;
+  transform: translate(100%);
+  transition-duration: 300ms;
+  align-items: center;
 }
 
 .projectItem{

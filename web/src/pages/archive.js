@@ -92,13 +92,13 @@ const ArchivePage = props => {
         <div className={styles.archiveContainer}>
           {projectNodes &&
             projectNodes.map(node => (
-              <li className={styles.projectContainer} key={node.id}>
+              <ul className={styles.projectContainer} key={node.id}>
                 <Link className={styles.root} to={`/project/${node.slug.current}`}>
 
 
-                  <div  className={responsiveTitle2}>
+                  <li  className={responsiveTitle2}>
                     <p className={styles.projectItem}> {node.title} </p>
-                   </div>
+                   </li>
                   </Link>
 
                 {node.mainImage && node.mainImage.asset && (
@@ -110,7 +110,7 @@ const ArchivePage = props => {
                     alt={node.mainImage.alt}
                   />
                 )}
-              </li>
+              </ul>
 
             ))}
         </div>
