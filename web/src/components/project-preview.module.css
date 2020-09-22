@@ -40,6 +40,9 @@
   font-weight: 800;
   letter-spacing: 0.05rem;
   width: auto;
+  opacity: 0;
+  transition: opacity, filter .2s;
+
 
 /*background: var(--color-peach);*/
 
@@ -51,15 +54,20 @@
 /* When you mouse over the container, fade in the overlay title */
 .leadMediaThumb:hover .overlay {
   display: block;
-  transition: .3s;
+  opacity: 1;
   z-index: 999;
 }
 
 .leadMediaThumb:hover img{
-    transition: .3s;
-  filter: brightness(85%);
+  filter: brightness(90%);
+  transition: .2s;
+
 
 }
+
+
+
+
 
 
 .title {
