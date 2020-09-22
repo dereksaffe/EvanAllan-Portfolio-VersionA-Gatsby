@@ -3,8 +3,8 @@
 
 .archiveContainer{
    height: 100vh;
-   flex-direction: row;
-
+  display: flex;
+  flex-direction: column;
 
 box-sizing: border-box;
 /*max-width: 960px;*/
@@ -49,7 +49,7 @@ margin-left: 3em;
 
   position: absolute;
   z-index: 1;
-  transform: translate(85%);
+  transform: translate(95%);
 }
 
 
