@@ -37,14 +37,14 @@ margin-left: 3em;
 
 .projectContainer {
   display:flex;
-
 }
 
 .projectContainer:hover img{
-  display: none;
-position:absolute;
+ @media (--media-min-medium){ display: block;}
+position: absolute;
 z-index: 1;
 transform: translate(100%);
+transition: 2s ease-in;
 }
 
 .projectItem{
