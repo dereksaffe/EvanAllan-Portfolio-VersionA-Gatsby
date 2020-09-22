@@ -88,10 +88,16 @@
       max-height: 80vh;
   }
 
+
+
   @media(--media-max-small){
     margin: .5em;
   }
 }
+
+@-moz-document url-prefix() { .imagesGallery img{
+  min-width: 30vw;
+}}
 
 .grid {
 
@@ -123,6 +129,13 @@ align-items: center;
         color: inherit;
       }
     }
+  }
+
+}
+
+@-moz-document url-prefix() {
+   .mainContent {
+    min-width: 30vw;
   }
 }
 
