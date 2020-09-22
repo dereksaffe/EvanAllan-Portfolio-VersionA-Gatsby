@@ -16,9 +16,8 @@ margin-left: 3em;
 }
 
 .projectContainer img{
- display:none;
- max-height: 60%;
-
+ display: none;
+  max-height: 60%;
 }
 
 .projectContainer p{
@@ -35,7 +34,6 @@ margin-left: 3em;
 
 
 .projectContainer{
- margin-right: 2em;
  text-decoration: none;
 
 }
@@ -45,12 +43,24 @@ margin-left: 3em;
 }
 
 .projectContainer:hover img{
-   @media (--media-min-medium){ display: block;}
+   @media (--media-max-small){ display: none;}
+  display: inline-flex;
+  animation: fade_in_show 500ms;
+
   position: absolute;
   z-index: 1;
-  transform: translate(100%);
-  transition-duration: 300ms;
-  align-items: center;
+  transform: translate(85%);
+}
+
+
+@keyframes fade_in_show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .projectItem{
