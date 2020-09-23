@@ -96,7 +96,7 @@
 }
 
 @-moz-document url-prefix() { .imagesGallery img{
-  min-width: 30vw;
+  min-width: 0vw;
   max-width: 100vw;
 }}
 
@@ -136,7 +136,8 @@ align-items: center;
 
 @-moz-document url-prefix() {
    .mainContent {
-    min-width: 30vw;
+    min-width: 23vw;
+    max-width: 100vw;
   }
 }
 
