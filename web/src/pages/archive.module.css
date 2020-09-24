@@ -18,7 +18,7 @@ z-index: 999;
 
 .projectContainer img{
  display: none;
-  max-height: 40%;
+  max-height: 50%;
 }
 
 .projectContainer p{
