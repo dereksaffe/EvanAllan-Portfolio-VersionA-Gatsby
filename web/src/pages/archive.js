@@ -88,7 +88,7 @@ const ArchivePage = props => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <>
+      <Container>
         <div className={styles.archiveContainer} >
           {projectNodes &&
             projectNodes.map(node => (
@@ -114,7 +114,7 @@ const ArchivePage = props => {
 
             ))}
         </div>
-      </>
+      </Container>
    </Layout>
   )
 }
