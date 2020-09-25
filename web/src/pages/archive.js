@@ -2,6 +2,7 @@ import React from 'react'
 import {graphql} from 'gatsby'
 import { Link } from 'gatsby'
 
+
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
@@ -88,7 +89,7 @@ const ArchivePage = props => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Container>
+      <Container className={styles.root}>
         <div className={styles.archiveContainer} >
           {projectNodes &&
             projectNodes.map(node => (

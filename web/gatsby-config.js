@@ -27,6 +27,7 @@ module.exports = {
         overlayDrafts: !isProd && token
       }
     },
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`
   ]
 }
