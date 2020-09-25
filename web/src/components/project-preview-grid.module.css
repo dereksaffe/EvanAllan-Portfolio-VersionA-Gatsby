@@ -3,6 +3,7 @@
 
 .root {
   margin: 2em 0 4em;
+  padding: 2em;
   height: 100vh;
   width: auto;
 }

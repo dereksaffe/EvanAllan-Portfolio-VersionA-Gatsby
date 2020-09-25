@@ -6,21 +6,31 @@ import BlockText from './block-text'
 
 import styles from './project-preview.module.css'
 
+
+const randomGenerator = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 function ProjectPreview (props) {
+  const { slug, mainImage, title, _rawImagesGallery} = props
+
+
+
+
   return (
-    <Link className={styles.root} to={`/project/${props.slug.current}`}>
+    <Link className={styles.root} to={`/project/${slug.current}`}>
       <div className={styles.leadMediaThumb}>
-        {props.mainImage && props.mainImage.asset && (
+        {mainImage && mainImage.asset && (
           <img
-            src={imageUrlFor(buildImageObj(props.mainImage))
+            src={imageUrlFor(buildImageObj(mainImage))
               .fit('clip')
               .quality(60)
               .url()}
-            alt={props.mainImage.alt}
+            alt={mainImage.alt}
           />
         )}
         <div className={styles.overlay}>
-          {props.title}
+          {title}
         </div>
       </div>
     </Link>
@@ -28,3 +38,10 @@ function ProjectPreview (props) {
 }
 
 export default ProjectPreview
+
+
+
+
+
+
+
