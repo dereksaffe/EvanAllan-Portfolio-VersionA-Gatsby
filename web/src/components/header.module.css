@@ -47,6 +47,8 @@
 }
 
 .nextButton{
+    display: none;
+
    bottom: 0;
    right: 1rem;
    position: fixed;
@@ -57,6 +59,7 @@
   font-weight: 800;
 
 }
+
 
 .toggleNavButton {
   appearance: none;
