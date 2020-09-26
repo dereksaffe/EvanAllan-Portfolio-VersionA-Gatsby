@@ -22,10 +22,6 @@ function ProjectPreview (props) {
   const randomPosition = randomGenerator(0, _rawImagesGallery.length - 1)
 
 
-  console.log(_rawImagesGallery.length)
-  console.log(_rawImagesGallery[randomPosition])
-  console.log(_rawImagesGallery[1].asset._ref)
-
   return (
     <Link className={styles.root} to={`/project/${slug.current}`}>
       <div className={styles.leadMediaThumb}>
