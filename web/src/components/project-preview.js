@@ -12,21 +12,30 @@ const randomGenerator = (min, max) => {
 }
 
 function ProjectPreview (props) {
-  const { slug, mainImage, title, _rawImagesGallery} = props
+  const { slug, mainImage, title, _rawImagesGallery, imagesGallery} = props
 
 
+  const randomGenerator = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
 
+  const randomPosition = randomGenerator(0, _rawImagesGallery.length - 1)
+
+
+  console.log(_rawImagesGallery.length)
+  console.log(_rawImagesGallery[randomPosition])
+  console.log(_rawImagesGallery[1].asset._ref)
 
   return (
     <Link className={styles.root} to={`/project/${slug.current}`}>
       <div className={styles.leadMediaThumb}>
-        {mainImage && mainImage.asset && (
+        {_rawImagesGallery[randomPosition] && _rawImagesGallery[randomPosition].asset && (
           <img
-            src={imageUrlFor(buildImageObj(mainImage))
+            src={imageUrlFor(buildImageObj(_rawImagesGallery[randomPosition]))
               .fit('clip')
-              .quality(60)
+              .quality(50)
               .url()}
-            alt={mainImage.alt}
+            alt={_rawImagesGallery[randomPosition].alt}
           />
         )}
         <div className={styles.overlay}>

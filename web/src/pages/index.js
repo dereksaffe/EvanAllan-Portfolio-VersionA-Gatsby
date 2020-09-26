@@ -30,6 +30,14 @@ export const query = graphql`
         node {
           id
           featured
+          _rawImagesGallery
+          imagesGallery {
+          _key
+          _type
+          asset {
+            id
+          }
+        }
           mainImage {
             crop {
               _key
