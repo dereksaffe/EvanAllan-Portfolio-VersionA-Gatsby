@@ -2,7 +2,7 @@
 @import '../styles/custom-properties.css';
 
 .root {
-  margin: 2em 0 4em;
+  margin: 4em 0 4em;
   padding: 2em;
   height: 100vh;
   width: auto;
@@ -32,7 +32,7 @@
                          ". a b c ."
 
                          ;
-    grid-template-columns: .18fr .25fr .22fr  .24fr .1fr;
+    grid-template-columns: .16fr .28fr .27fr  .25fr .1fr;
     grid-template-rows: auto;}
 
   /*@media (--media-min-small) {
@@ -61,11 +61,15 @@
 
 }
 
+.grid li a{
+  display: flex;
+}
+
 
  .grid li:first-child{
   grid-area: a;
    @media (--media-min-medium){
-  margin-top: 3em;}
+  margin-top: 1.9em;}
 
 }
 
@@ -77,7 +81,7 @@
 
 .grid li:nth-child(3) {
   grid-area: c;
-   @media (--media-min-medium){margin-top: 5em;}
+   @media (--media-min-medium){margin-top: 1.5em;}
 
 }
 
