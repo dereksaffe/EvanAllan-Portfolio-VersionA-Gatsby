@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import styled from "styled-components"
-import NavbarLinks from "./NavbarLinks"
+import NavbarLinks from "./navbarlinks.js"
 
 const Navigation = styled.nav`
     display: none;
