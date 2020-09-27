@@ -7,6 +7,14 @@ const query = graphql`
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
     }
+    allSitePage {
+    edges {
+      node {
+        id
+        path
+      }
+    }
+  }
   }
 `
 
@@ -18,6 +26,8 @@ function LayoutContainer (props) {
   function handleHideNav () {
     setShowNav(false)
   }
+
+  console.log(props.location)
   return (
     <StaticQuery
       query={query}
@@ -27,9 +37,11 @@ function LayoutContainer (props) {
             'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
           )
         }
+
         return (
           <Layout
             {...props}
+            path={props.location}
             showNav={showNav}
             siteTitle={data.site.title}
             onHideNav={handleHideNav}

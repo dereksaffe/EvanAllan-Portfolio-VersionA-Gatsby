@@ -2,6 +2,7 @@ import {Link} from 'gatsby'
 import React, { useState } from 'react'
 import Icon from './icon'
 import {cn} from '../lib/helpers'
+import Navbar from './navbar/navbar.js'
 
 import styles from './header.module.css'
 
@@ -23,25 +24,18 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
         <Link to='/'>{siteTitle}</Link>
       </div>
 
-      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
-        <Icon symbol='hamburger' />
-      </button>
+
+      <Navbar />
+
+
+
 
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link className={cn(styles.aBold, styles.mobileNavItem)} to='/about/'>About Evan</Link>
-          </li>
-
-          <li>
             <Link className={cn(styles.aBold, styles.onlyDesktopNavItem)} to='/about/' onMouseOver={() => setAbout('About Evan')}
                                  onMouseLeave={() => setAbout('A')}>{aboutText}</Link>
           </li>
-
-          <li>
-            <Link className={cn(styles.aBold, styles.mobileNavItem)}  to='/archive/'>Evan's Projects</Link>
-          </li>
-
 
         </ul>
       </nav>
