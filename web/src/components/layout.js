@@ -2,8 +2,6 @@ import React from 'react'
 
 import Header from './header'
 
-import styled from 'styled-components'
-
 import '../styles/layout.css'
 import styles from './layout.module.css'
 
