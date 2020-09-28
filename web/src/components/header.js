@@ -1,13 +1,12 @@
 import {Link} from 'gatsby'
 import React, { useState } from 'react'
-import Icon from './icon'
 import {cn} from '../lib/helpers'
 import Navbar from './navbar/navbar.js'
 
 import styles from './header.module.css'
 
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
+const Header = ({showNav, siteTitle}) => {
 
   const [aboutText, setAbout] = useState('A');
 
@@ -24,11 +23,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
         <Link to='/'>{siteTitle}</Link>
       </div>
 
-
       <Navbar />
-
-
-
 
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
