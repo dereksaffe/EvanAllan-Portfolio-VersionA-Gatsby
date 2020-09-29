@@ -30,7 +30,7 @@ const Toggle = styled.div`
   display: none;
   height: 100%;
   cursor: pointer;
-  padding: 0 10vw;
+  padding: 0 5vw;
 
   @media (max-width: 768px) {
     display: flex;
@@ -42,6 +42,7 @@ const Navbox = styled.div`
   height: 100%;
   justify-content: flex-end;
   align-items: center;
+  font-weight: 700;
 
   @media (max-width: 768px) {
       display: flex;
