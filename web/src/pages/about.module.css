@@ -22,6 +22,7 @@
 
 .mainContent {
  align-items: center;
+ margin-top: 1em;
 }
 
 .bio{
@@ -42,12 +43,8 @@
   line-height: var(--font-micro-line-height);
 }
 
-.awards a{
-  color: var(--color-blue);
-}
-
 .awards a:hover{
-  color: #f27360;
+  color: var(--color-blue);
   transition: color 100ms ease-in-out;
 }
 .profileImage {
