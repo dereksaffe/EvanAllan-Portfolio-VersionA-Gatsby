@@ -3,47 +3,55 @@
 
 .aboutPageContainer {
 
-  @media (--media-max-small) {
+  @media (--media-max-medium) {
     padding: 6.5em .75em .4em .75em;
   }
 
   @media (--media-min-medium){
+    height: 100vh;
     padding: 5em;
     display: grid;
     grid-gap: 6rem;
     /* Size of items defined inside container */
-      grid-template-columns: 1.3fr 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr 1.2fr;
       grid-template-rows: auto;
       grid-template-areas: "bio pic awards awards"
-                          "contact . awards awards"
-                          ". . awards awards";
+                          "contact . awards awards";
       }
     }
 
 .mainContent {
  align-items: center;
-
 }
 
 .bio{
   grid-area: bio;
+  margin-left: .2em;
 }
 
 .pic {
   grid-area: pic;
+  margin-top: 5em;
 }
 .contact{
   grid-area: contact;
 }
 .awards{
   grid-area: awards;
-
+  font-size: var(--font-small-size);
+  line-height: var(--font-micro-line-height);
 }
 
+.awards a{
+  color: var(--color-blue);
+}
+
+.awards a:hover{
+  color: #f27360;
+  transition: color 100ms ease-in-out;
+}
 .profileImage {
   position: relative;
   background: var(--color-peach);
   padding-bottom: calc(9 / 16 * 100%);
-
-
 }

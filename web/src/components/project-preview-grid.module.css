@@ -2,7 +2,7 @@
 @import '../styles/custom-properties.css';
 
 .root {
-  margin: 4em 0 4em;
+  margin-top: 4em;
   padding: 2em;
   height: 100vh;
   width: auto;
@@ -47,6 +47,9 @@
 
 .gridContainer{
   /*width: 100vw;*/
+  @media (--media-max-medium) {
+    margin-bottom: 2em !important;
+  }
 
 }
 
@@ -81,6 +84,7 @@
 
 .grid li:nth-child(3) {
   grid-area: c;
+
    @media (--media-min-medium){margin-top: 1.5em;}
 
 }
