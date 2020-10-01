@@ -13,7 +13,10 @@
   display: flex;
   position: fixed;
   width: 100%;
-  height: 5vh;
+
+  @media (--media-max-medium) {
+  height: 8vh;
+  }
 
   @media (--media-min-small) {
     padding: 1.5em 1.5em;
