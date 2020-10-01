@@ -5,8 +5,7 @@ import styled from "styled-components"
 import NavbarLinks from "./navbarlinks.js"
 
 const Navigation = styled.nav`
-    display: none;
-  height: 10vh;
+  display: none;
   display: flex;
   background-color: none;
   position: relative;
