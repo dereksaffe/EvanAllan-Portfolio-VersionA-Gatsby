@@ -33,7 +33,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link className={cn(styles.aBold, styles.onlyDesktopNavItem)} to='/about/' onMouseOver={() => setAbout('About Evan')}
+            <Link className={cn(styles.aBold, styles.onlyDesktopNavItem, styles.aboutEvanText)} to='/about/' onMouseOver={() => setAbout('About Evan')}
                                  onMouseLeave={() => setAbout('A')}>{aboutText}</Link>
           </li>
 
@@ -41,7 +41,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
       </nav>
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
       <div className={styles.evansProjectText}>
-        <Link className={styles.aBold} to='/archive/' onMouseOver={() => setProject("Evan's Projects")}
+          <Link className={cn(styles.aBold, styles.evansProjectText)} to='/archive/' onMouseOver={() => setProject("Evan's Projects")}
           onMouseLeave={() => setProject('E')}>{projectText}</Link>
       </div>
       <div className={styles.nextButton}>
