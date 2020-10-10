@@ -5,6 +5,8 @@
   position: relative;
   z-index: 100;
   background: inherit;
+
+
 }
 
 .wrapper {
@@ -16,6 +18,7 @@
 
   @media (--media-max-medium) {
   height: 8vh;
+  position: absolute;
   }
 
   @media (--media-min-small) {
