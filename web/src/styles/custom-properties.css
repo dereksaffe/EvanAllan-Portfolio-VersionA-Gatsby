@@ -9,7 +9,8 @@
   --color-white: #fff;
   --color-accent: #202123;
   --color-blue: #034ea2;
-  --color-peach: #FFEAC1;
+  /* -- color-peach = current background color not nec peach. Original bg color =  hsl(40, 100%, 88%) */
+  --color-peach: #fff1d6;
 
   /* Typography */
   --unit: 16;

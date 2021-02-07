@@ -21,7 +21,7 @@ const NavItem = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: goldenrod;
+    : goldenrod;
     height: 1px;
     transition: all 0.4s ease-in;
   }

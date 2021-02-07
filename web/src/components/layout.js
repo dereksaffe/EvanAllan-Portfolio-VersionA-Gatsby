@@ -17,7 +17,7 @@ const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle, path}) => {
 }
 
 const StyledLayout = styled.main`
-  background: ${({path}) => (path === '/ar/' ? '#FFEAC1' : '#FFEAC1')}
+  background: ${({path}) => (path === '/ar/' ? '#fff1d6' : '#fff1d6')}
 `
 
 export default Layout
