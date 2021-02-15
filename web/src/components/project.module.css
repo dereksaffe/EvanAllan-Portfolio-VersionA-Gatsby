@@ -119,6 +119,7 @@ align-items: center;
 
 
 @media (--media-min-large){
+  min-width: 15vw;
   max-width: 25vw;
   max-height: 55vh;}
 
@@ -140,7 +141,7 @@ align-items: center;
 
 @-moz-document url-prefix() {
    .mainContent {
-    min-width: 24vw;
+    min-width: 15vw;
     max-width: 100vw;
   }
 }
@@ -149,7 +150,7 @@ align-items: center;
   @supports (-webkit-appearance:none) {
 
     .mainContent {
-      min-width: 20vw;
+      min-width: 25vw;
 
     }
   }
