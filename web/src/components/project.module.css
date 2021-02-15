@@ -119,7 +119,7 @@ align-items: center;
 
 
 @media (--media-min-large){
-  min-width: 15vw;
+  min-width: 16vw;
   max-width: 50vw;
   max-height: 55vh;}
 
