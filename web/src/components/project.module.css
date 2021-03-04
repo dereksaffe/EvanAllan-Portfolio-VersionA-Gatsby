@@ -129,8 +129,9 @@
   max-height: 65vh;}
 
   @media(--media-max-medium) {
-    margin: 3em 1em .5em 2em;
-    /*align-items: center;*/}
+  margin: 10% 4% .5% 5%;
+/*align-items: center;*/
+}
 
 @nest & a {
     color: var(--color-accent);
