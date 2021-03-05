@@ -148,8 +148,9 @@
 
 @-moz-document url-prefix() {
    .mainContent {
-    min-width: 17vw;
-    max-width: 100vw;
+     min-width: 2vw;
+    max-width: 25vw;
+    flex-shrink: 0;
   }
 }
 
