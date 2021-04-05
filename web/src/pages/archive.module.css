@@ -52,7 +52,7 @@ z-index: 999;
 
   position: absolute;
   z-index: 1;
-  transform: translate(500px);
+  transform: translatex(500px) translateY(-100px);
 }
 
 
