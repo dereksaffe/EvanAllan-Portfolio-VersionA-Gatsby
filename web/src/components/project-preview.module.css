@@ -18,6 +18,8 @@
   min-width: 150px;
   width: 100%;
   max-width: 500px;
+  background-color: transparent;
+  overflow: hidden;
 }
 
 .placeholderBg {
@@ -30,8 +32,14 @@
   background-position: center;
   filter: blur(8px);
   transform: scale(1.05);
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
   z-index: 1;
+  pointer-events: none;
+  
+  /* Ensure placeholder is completely hidden on mobile when loaded */
+  @media (--media-max-medium) {
+    will-change: opacity, visibility;
+  }
 }
 
 .mainImage {
@@ -45,10 +53,12 @@
   position: relative;
   z-index: 2;
   filter: brightness(75%);
+  background-color: transparent;
   
   /* On mobile, always show dimmed image */
   @media (--media-max-medium) {
     filter: brightness(75%);
+    background-color: transparent;
   }
 }
 

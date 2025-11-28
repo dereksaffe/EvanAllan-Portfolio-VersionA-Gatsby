@@ -104,7 +104,8 @@ function ProjectPreview(props) {
           className={styles.placeholderBg}
           style={{
             backgroundImage: `url(${lqipUrl})`,
-            opacity: isLoaded ? 0 : 1
+            opacity: isLoaded ? 0 : 1,
+            visibility: isLoaded ? 'hidden' : 'visible'
           }}
           aria-hidden="true"
         />
