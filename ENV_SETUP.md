@@ -57,3 +57,4 @@ After deployment, check build logs:
 - No errors about missing `.env` files
 - Gatsby connects to Sanity successfully
 
+

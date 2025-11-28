@@ -73,3 +73,4 @@ After setting variables, check build logs to ensure they're being read:
 - Check `GATSBY_SANITY_DATASET` matches your dataset name
 - Verify project ID is correct: `tyru08of`
 
+
