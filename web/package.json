@@ -30,6 +30,9 @@
     "gatsby-plugin-typography": "^5.13.1",
     "gatsby-source-sanity": "^7.9.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "postcss": "^8.4.35",
+    "postcss-import": "^16.0.1",
+    "postcss-preset-env": "^9.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -45,9 +48,6 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.33.2",
-    "postcss": "^8.4.35",
-    "postcss-import": "^16.0.1",
-    "postcss-preset-env": "^9.4.0",
     "prettier": "^3.2.5"
   }
 }
