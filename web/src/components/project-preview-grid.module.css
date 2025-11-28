@@ -2,10 +2,13 @@
 @import '../styles/custom-properties.css';
 
 .root {
-  margin-top: 4em;
-  padding: 2em;
-  height: 100vh;
-  width: auto;
+  padding: 1em;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (--media-min-small) {
+    padding: 2em;
+  }
 }
 
 .headline {
@@ -14,96 +17,38 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin: 2rem 0;
+  margin: 0 0 2rem 0;
 }
 
-
- .grid {
+.grid {
   margin: 0;
   padding: 0;
   list-style: none;
-
-
-  grid-gap: 1.75em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
 
   @media (--media-min-medium) {
-  display: grid;
-    grid-template-areas: ". a b c ."
-                         ". a b c ."
-
-                         ;
-    grid-template-columns: .14fr .28fr .27fr  .25fr .1fr;
-    grid-template-rows: auto;}
-
-  /*@media (--media-min-small) {
-    grid-template-columns: 1fr;
-   }
-
-  @media (--media-min-medium) {
-    grid-template-columns: auto;
-     }*/
-
-}
-
-.gridContainer{
-  /*width: 100vw;*/
-  @media (--media-max-medium) {
-    margin-bottom: 2em !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5em;
   }
-
 }
 
-.flexGrid{
-  @media (--media-min-medium){
+.gridItem {
   display: flex;
-  justify-content: space-around;}
+  justify-content: center;
+  align-items: center;
 }
 
-.grid li{
-  display:flex;
-
-}
-
-.grid li a{
-  display: flex;
-}
-
-
- .grid li:first-child{
-  grid-area: a;
-   @media (--media-min-medium){
-  margin-top: 1.9em;}
-
-}
-
- .grid li:nth-child(2){
-  grid-area: b;
-   @media (--media-min-medium){margin: .5em 1em 0 .1em;}
-}
-
-
-.grid li:nth-child(3) {
-  grid-area: c;
-
-   @media (--media-min-medium){margin-top: 1.5em;}
-
-}
-
-.browseMoreNav {
-  composes: small from './typography.module.css';
-  margin-top: 1rem;
-  text-align: right;
-
-  @nest & a {
-    display: inline-block;
-    padding: 0.75rem 0;
-    color: inherit;
-    text-decoration: none;
-
-    @media (hover: hover) {
-      @nest &:hover {
-        color: var(--color-accent);
-      }
-    }
-  }
+/* All grid variants use same flex layout */
+.gridThree,
+.gridFour,
+.gridFive,
+.gridSix {
+  /* Inherits from .grid */
 }

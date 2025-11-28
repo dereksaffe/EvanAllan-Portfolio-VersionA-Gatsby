@@ -1,4 +1,16 @@
+# Netlify configuration for Sanity Studio v3
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# SPA routing - all routes should serve index.html
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/index.html"
   status = 200

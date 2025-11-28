@@ -1,93 +1,87 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
 .root {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: inherit;
   text-decoration: none;
-}
-
-.title {
-  composes: responsiveTitle1 from './typography.module.css';
-  max-width:100%;
 }
 
 .leadMediaThumb {
   position: relative;
   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding-bottom: .5em;
-  /*background: var(--color-peach);*/
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  min-width: 150px;
+  width: 100%;
+  max-width: 500px;
+}
 
+.placeholderBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.05);
+  transition: opacity 0.4s ease-out;
+  z-index: 1;
+}
 
-
-  @nest & img {
-
-
-    /*top: 0;*/
-    max-height: 100%;
-   /*max-width: 100%;*/
+.mainImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  transition: opacity 0.4s ease-out, filter 0.2s ease;
+  position: relative;
+  z-index: 2;
+  filter: brightness(75%);
+  
+  /* On mobile, always show dimmed image */
+  @media (--media-max-medium) {
+    filter: brightness(75%);
   }
-
-
 }
 
 .overlay {
-
-   position: absolute;
-  display: none;
-  font-size:1.5rem;
-  padding: .3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
   text-align: center;
-
   font-weight: 800;
   letter-spacing: 0.05rem;
-  width: auto;
   opacity: 0;
-  transition: opacity, filter .2s;
-
-
-/*background: var(--color-peach);*/
-
-    color: white;
-}
-
-
-
-/* When you mouse over the container, fade in the overlay title */
-.leadMediaThumb:hover .overlay {
-  display: block;
-  opacity: 1;
-  z-index: 999;
-  transition: opacity 200ms;
-}
-
-.leadMediaThumb:hover img{
-  filter: brightness(92%);
-  transition: filter 200ms;
-
-
-}
-
-
-
-
-
-
-.title {
-  text-align: center;
-  @media (hover: hover) {
-    @nest .root:hover & {
-      text-decoration: none;
-    }
+  transition: opacity 0.2s ease;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  pointer-events: none;
+  
+  /* On mobile, always show overlay */
+  @media (--media-max-medium) {
+    opacity: 1;
   }
 }
 
-.excerpt {
-  @nest & p {
-    margin: 0.5em 0;
+/* Hover effects - desktop only */
+@media (hover: hover) {
+  .leadMediaThumb:hover .overlay {
+    opacity: 1;
   }
 
-  @nest & strong {
-    font-weight: 500;
+  .leadMediaThumb:hover .mainImage {
+    filter: brightness(75%);
   }
 }
-

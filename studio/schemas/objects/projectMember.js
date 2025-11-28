@@ -1,15 +1,17 @@
-export default {
+import {defineType, defineField} from 'sanity'
+
+export default defineType({
   type: 'object',
   name: 'projectMember',
   title: 'Project Member',
   fields: [
-    {
+    defineField({
       title: 'Person',
       name: 'person',
       type: 'reference',
-      to: {type: 'person'}
-    },
-    {
+      to: [{type: 'person'}],
+    }),
+    defineField({
       title: 'Roles',
       name: 'roles',
       type: 'array',
@@ -20,23 +22,23 @@ export default {
           {title: 'Designer', value: 'designer'},
           {title: 'Developer', value: 'developer'},
           {title: 'Editor', value: 'editor'},
-          {title: 'Manager', value: 'manager'}
-        ]
-      }
-    }
+          {title: 'Manager', value: 'manager'},
+        ],
+      },
+    }),
   ],
   preview: {
     select: {
       personName: 'person.name',
       roles: 'roles',
-      media: 'person.image'
+      media: 'person.image',
     },
-    prepare (data) {
+    prepare(data) {
       return {
         ...data,
         title: data.personName,
-        subtitle: data.roles && data.roles.join('/')
+        subtitle: data.roles && data.roles.join('/'),
       }
-    }
-  }
-}
+    },
+  },
+})

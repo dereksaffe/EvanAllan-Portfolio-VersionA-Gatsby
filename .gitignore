@@ -1,8 +1,64 @@
 # Mac files
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Dependency directories
-/node_modules
+node_modules/
+web/node_modules/
+studio/node_modules/
 
-# lerna files
-/lerna-debug.log
+# Build outputs
+web/.cache/
+web/public/
+studio/dist/
+studio/.sanity/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+web/.env*
+studio/.env*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Gatsby
+web/.cache/
+web/public/
+
+# Sanity
+studio/.sanity/
+studio/dist/

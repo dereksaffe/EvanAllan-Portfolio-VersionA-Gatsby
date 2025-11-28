@@ -7,29 +7,25 @@
   composes: responsiveTitle1 from './typography.module.css';
 }
 
-.wrapper{
-   @media(--media-max-medium){
-     overflow-y: scroll;
-     align-items: center;
-     display: flex;
-     flex-direction:column;
-     margin-top: 2em;
-   }
-   @media (--media-min-medium) {
-  display:flex;
-  padding-left: 2em;
-
-
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  overflow-x: scroll;
-
+.wrapper {
+  @media (--media-max-medium) {
+    overflow-y: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+  }
+  
+  @media (--media-min-medium) {
+    display: flex;
+    padding-left: 2em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: auto;
+  }
 }
 
-
-
-}
 .mainImage {
   position: relative;
   background: var(--color-peach);
@@ -50,62 +46,84 @@
 .imagesGallery {
   background: var(--color-peach);
 
-  /*padding-bottom: calc(9 / 16 * 100%); */
   @media (--media-min-medium) {
-      position: relative;
-
-  display: flex;
-   justify-content: space-between;
-
+    position: relative;
+    display: flex;
+    justify-content: space-between;
     padding: 3.2em;
-  max-height: 90vh;
-   white-space:nowrap
-
-   @nest & img {
-    align-items:center;
-       justify-content: space-between;
-       display: flex;
-
-   }
-   }
-
-    @media(--media-max-medium) {
-      overflow-y: auto;
-      overflow-x:auto;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      max-width: 100vw;
-           margin-top: 2em;
-           margin-bottom: 2em;
-           padding: 1em;
-
-    }
-}
-
-.imagesGallery img{
-
-  @media (--media-min-medium){
-  margin-left: 5rem;
-      margin-top: 2rem;
-      padding-right: 5rem;
-      max-height: 70vh;
+    max-height: 90vh;
+    white-space: nowrap;
   }
 
-
-
-  @media(--media-max-medium){
-    margin: .5em;
+  @media (--media-max-medium) {
+    overflow-y: auto;
+    overflow-x: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
   }
 }
 
-@-moz-document url-prefix() { .imagesGallery img{
-  min-width: 0vw;
-  max-width: 100vw;
-}}
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  
+  @media (--media-min-medium) {
+    margin-left: 5rem;
+    margin-top: 2rem;
+    padding-right: 5rem;
+    max-height: 70vh;
+    flex-shrink: 0;
+  }
+
+  @media (--media-max-medium) {
+    margin: 0.5em;
+    width: 100%;
+  }
+}
+
+.imagePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: opacity 0.3s ease-out;
+  z-index: 1;
+}
+
+.galleryImage {
+  display: block;
+  transition: opacity 0.4s ease-out;
+  z-index: 2;
+  position: relative;
+  
+  @media (--media-min-medium) {
+    max-height: 70vh;
+    width: auto;
+  }
+
+  @media (--media-max-medium) {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@-moz-document url-prefix() {
+  .galleryImage {
+    min-width: 0vw;
+    max-width: 100vw;
+  }
+}
 
 .grid {
-
   @media (--media-min-medium) {
     display: grid;
     grid-template-columns: 1fr;
@@ -114,26 +132,19 @@
 }
 
 .mainContent {
+  @media (--media-min-large) {
+    min-width: 2vw;
+    max-width: 25vw;
+    flex-shrink: 0;
+    align-items: center;
+    max-height: 65vh;
+  }
 
+  @media (--media-max-medium) {
+    margin: 10% 4% 0.5% 5%;
+  }
 
-
-@media (--media-min-large){
-   min-width: 2vw;
-  max-width: 25vw;
-  flex-shrink:0;
-  align-items: center;
-
-
-
-
-  max-height: 65vh;}
-
-  @media(--media-max-medium) {
-  margin: 10% 4% .5% 5%
-/*align-items: center;*/
-}
-
-@nest & a {
+  @nest & a {
     color: var(--color-accent);
 
     @media (hover: hover) {
@@ -142,25 +153,20 @@
       }
     }
   }
-
 }
 
-
 @-moz-document url-prefix() {
-   .mainContent {
-     min-width: 2vw;
+  .mainContent {
+    min-width: 2vw;
     max-width: 25vw;
     flex-shrink: 0;
   }
 }
 
-@media not all and (min-resolution:.001dpcm) {
-  @supports (-webkit-appearance:none) {
-
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
     .mainContent {
-
       min-width: 25vw;
-
     }
   }
 }

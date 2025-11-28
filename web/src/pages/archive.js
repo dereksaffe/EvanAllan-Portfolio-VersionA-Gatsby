@@ -1,35 +1,32 @@
 import React from 'react'
-import {graphql} from 'gatsby'
-import { Link } from 'gatsby'
-
+import {graphql, Link} from 'gatsby'
 
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import ProjectPreview from '../components/project-preview'
-import { cn, buildImageObj } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
+import {cn, buildImageObj} from '../lib/helpers'
+import {imageUrlFor} from '../lib/image-url'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
+  filterOutDocsPublishedInTheFuture,
 } from '../lib/helpers'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import styles from './archive.module.css'
+import * as styles from './archive.module.css'
 
-import {responsiveTitle2} from '../components/typography.module.css'
+import * as typography from '../components/typography.module.css'
 
 export const query = graphql`
   query ArchivePageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"})
-    {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
       description
       keywords
-     }
+    }
     projects: allSanitySampleProject {
-          edges {
+      edges {
         node {
           id
           mainImage {
@@ -55,19 +52,19 @@ export const query = graphql`
             alt
           }
           title
-           slug {
-          _key
-          _type
-          current
-        }
+          slug {
+            _key
+            _type
+            current
+          }
         }
       }
-       }
+    }
   }
 `
 
-const ArchivePage = props => {
-  const { data, errors } = props
+const ArchivePage = (props) => {
+  const {data, errors} = props
 
   if (errors) {
     return (
@@ -78,49 +75,47 @@ const ArchivePage = props => {
   }
 
   const site = (data || {}).site
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects)
-    /*.filter(filterOutDocsWithoutSlugs)
-    .filter(filterOutDocsPublishedInTheFuture) */
-    : []
-
-
+  const projectNodes = (data || {}).projects ? mapEdgesToNodes(data.projects) : []
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO title={site?.title} description={site?.description} keywords={site?.keywords} />
       <Container className={styles.root}>
-        <div className={styles.archiveContainer} >
+        <div className={styles.archiveContainer}>
           {projectNodes &&
-            projectNodes.map(node => (
-              <ul className={styles.projectContainer} key={node.id}>
-                <Link className={styles.root} to={`/project/${node.slug.current}`}>
+            projectNodes.map((node) => {
+              const imageObj = node.mainImage?.asset ? buildImageObj(node.mainImage) : null
+              const imageUrl = imageObj
+                ? imageUrlFor(imageObj)
+                    .width(600)
+                    .fit('clip')
+                    .quality(40)
+                    .auto('format')
+                    .url()
+                : null
 
-
-                  <li  className={responsiveTitle2}>
-                    <p className={styles.projectItem}> {node.title} </p>
-                   </li>
+              return (
+                <ul className={styles.projectContainer} key={node.id}>
+                  <Link className={styles.root} to={`/project/${node.slug?.current}/`}>
+                    <li className={typography.responsiveTitle2}>
+                      <p className={styles.projectItem}>{node.title}</p>
+                    </li>
                   </Link>
 
-                {node.mainImage && node.mainImage.asset && (
-                  <img
-                    src={imageUrlFor(buildImageObj(node.mainImage))
-                      .fit('clip')
-                      .quality(40)
-                      .url()}
-                    alt={node.mainImage.alt}
-                  />
-                )}
-              </ul>
-
-            ))}
+                  {imageUrl && (
+                    <img
+                      src={imageUrl}
+                      alt={node.mainImage?.alt || ''}
+                      loading="lazy"
+                    />
+                  )}
+                </ul>
+              )
+            })}
         </div>
       </Container>
-   </Layout>
+    </Layout>
   )
 }
-
-
-
 
 export default ArchivePage

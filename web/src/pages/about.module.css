@@ -1,53 +1,193 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
-.aboutPageContainer {
+.root {
+  min-height: 100vh;
+  
+  @media (--media-min-medium) {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}
 
+.aboutPageContainer {
   @media (--media-max-medium) {
-    padding: 6.5em .75em .4em .75em;
+    padding: 2em 0.75em 2em 0.75em;
   }
 
-  @media (--media-min-medium){
-    height: 100vh;
-    padding: 5em;
+  @media (--media-min-medium) {
+    height: calc(100vh - 70px);
+    max-height: calc(100vh - 70px);
+    padding: 2em 5em;
     display: grid;
-    grid-gap: 6rem;
-    /* Size of items defined inside container */
-      grid-template-columns: 1.2fr 1fr 1.2fr;
-      grid-template-rows: auto;
-      grid-template-areas: "bio pic awards awards"
-                          "contact . awards awards";
-      }
-    }
+    grid-gap: 3rem;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "bio pic awards"
+      "contact pic awards";
+    overflow: hidden;
+  }
+}
 
 .mainContent {
- align-items: center;
+  align-items: center;
 }
 
-.bio{
+.bio {
   grid-area: bio;
-  margin-left: .2em;
+  margin-left: 0.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 1em;
+  
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
 }
 
-.pic {
+#pic {
   grid-area: pic;
-  margin-top: 5em;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
 }
-.contact{
+
+.imagePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: opacity 0.3s ease-out;
+  z-index: 1;
+}
+
+.profileImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transition: opacity 0.4s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.contact {
   grid-area: contact;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  max-height: 100%;
+  margin-left: 0.2em;
+  padding-right: 1em;
+  
+  @media (--media-max-medium) {
+    margin-top: 2em;
+  }
+  
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
 }
-.awards{
+
+.awards {
   grid-area: awards;
   font-size: var(--font-small-size);
-  line-height: var(--font-micro-line-height);
+  line-height: var(--font-small-line-height);
+  overflow-y: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+  
+  /* Reduce padding between title and list items on desktop */
+  @media (--media-min-medium) {
+    padding-top: calc(1em - 0.1em);
+    padding-bottom: calc(1em - 0.1em);
+    
+    /* Title spacing */
+    & > *:first-child {
+      margin-bottom: 0.3em !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Consistent spacing for ALL paragraphs - reset all margins first */
+    & p {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    /* Then apply consistent spacing between all paragraphs */
+    & p + p {
+      margin-top: 0.3em !important;
+    }
+    
+    /* First paragraph after title */
+    & > *:first-child + p {
+      margin-top: 0.3em !important;
+    }
+  }
+  
+  /* Mobile spacing */
+  @media (--media-max-medium) {
+    & > *:first-child {
+      margin-bottom: 0.5em;
+    }
+    
+    & > *:not(:first-child) {
+      margin-top: 0;
+    }
+  }
+  
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
 }
 
-.awards a:hover{
+.awards a:hover {
   color: var(--color-blue);
   transition: color 100ms ease-in-out;
-}
-.profileImage {
-  position: relative;
-  background: var(--color-peach);
-  padding-bottom: calc(9 / 16 * 100%);
 }

@@ -1,41 +1,42 @@
-import MdPerson from 'react-icons/lib/md/person'
+import {defineType, defineField} from 'sanity'
+import {MdPerson} from 'react-icons/md'
 
-export default {
+export default defineType({
   name: 'person',
   type: 'document',
   title: 'Person',
   icon: MdPerson,
   fields: [
-    {
+    defineField({
       name: 'name',
       type: 'string',
-      title: 'Name'
-    },
-    {
+      title: 'Name',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       title: 'Slug',
       description: 'Some frontend will require a slug to be set to be able to show the person',
       options: {
         source: 'name',
-        maxLength: 96
-      }
-    },
-    {
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
-      type: 'figure'
-    },
-    {
+      type: 'figure',
+    }),
+    defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'bioPortableText'
-    }
+      type: 'bioPortableText',
+    }),
   ],
   preview: {
     select: {
       title: 'name',
-      media: 'image'
-    }
-  }
-}
+      media: 'image',
+    },
+  },
+})

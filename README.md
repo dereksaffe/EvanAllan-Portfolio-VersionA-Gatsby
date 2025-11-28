@@ -1,38 +1,78 @@
-# EvanAllan-Portfolio-VersionA-Gatsby
+# Evan Allan Portfolio
 
-A portfolio using structured content and a static site builder.
+A modern portfolio website built with Gatsby 5 and Sanity v3, featuring optimized image loading, responsive design, and seamless content management.
 
-Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gatsby-portfolio).
+## 🚀 Quick Start
 
-## What you have
+### Development
 
-- A blazing fast portfolio with [Gatsby.js](https://gatsbyjs.org)
-- Structured content using [Sanity.io](https://www.sanity.io)
-- Global deployment on [Netlify](https://netlify.com)
+```bash
+# Install dependencies
+npm install
 
-## Quick start
+# Run Gatsby development server
+npm run dev
 
-1. Clone this repository from your GitHub account
-2. `npm install` in the project root folder on local
-3. `npm run dev` to start the Studio and frontend locally
-   - Your Studio should be running on [http://localhost:3333](http://localhost:3333)
-   - Your frontend should be running on [http://localhost:8000](http://localhost:8000)
-4. `npm run build` to build to production locally
+# Run Sanity Studio
+npm run dev:studio
+```
 
-## Enable real-time content preview in development
+### Deployment
 
-1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/tyru08of/settings/api) and create a token with read rights.
-2. Copy `.env.development.template` to `.env.development` and paste in the token: `SANITY_READ_TOKEN="yourTokenHere"`.
-3. Restart the development server (`ctrl + C` and `npm run dev`).
+```bash
+# 1. Deploy GraphQL schema (REQUIRED)
+npm run deploy:graphql
 
-If you want to disable the preview you can set `watchMode: false` in gatsby-config.js. If you just want to preview published changes you can set `overlayDrafts: false` in gatsby-config.js.
+# 2. Run pre-deployment checks
+npm run pre-deploy
 
-## Deploy changes
+# 3. Commit and push
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
 
-Netlify automatically deploys new changes commited to the `master` branch on GitHub. If you want to change the deployment branch you may do so in [build & deploy settings on Netlify](https://www.netlify.com/docs/continuous-deployment/#branches-deploys).
+## 📁 Project Structure
 
-## Get help
+```
+├── web/              # Gatsby frontend
+├── studio/           # Sanity Studio CMS
+├── netlify.toml      # Netlify configuration
+└── scripts/          # Deployment scripts
+```
 
-[![Slack Community Button](https://slack.sanity.io/badge.svg)](https://slack.sanity.io/)
+## 🛠️ Tech Stack
 
-Join [Sanity’s developer community](https://slack.sanity.io) or ping us [on twitter](https://twitter.com/sanity_io).
+- **Gatsby 5** - Static site generator
+- **Sanity v3** - Headless CMS
+- **React 18** - UI framework
+- **Styled Components** - CSS-in-JS
+- **Netlify** - Hosting & deployment
+
+## 📚 Documentation
+
+- [Deployment Checklist](./DEPLOYMENT_CHECKLIST.md) - Complete deployment guide
+- [Quick Deploy](./QUICK_DEPLOY.md) - Quick reference
+- [Pre-Deployment](./PRE_DEPLOYMENT.md) - Pre-commit checklist
+- [Git Commit Guide](./GIT_COMMIT_GUIDE.md) - Git workflow
+
+## 🌐 Deployment
+
+The project is configured for deployment on Netlify with two sites:
+1. **Gatsby Website** - Main portfolio site
+2. **Sanity Studio** - Content management interface
+
+See [DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md) for detailed setup instructions.
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start Gatsby dev server
+- `npm run dev:studio` - Start Sanity Studio
+- `npm run build` - Build Gatsby site
+- `npm run build:studio` - Build Sanity Studio
+- `npm run deploy:graphql` - Deploy Sanity GraphQL schema
+- `npm run pre-deploy` - Run pre-deployment checks
+
+## 📝 License
+
+Private project - All rights reserved

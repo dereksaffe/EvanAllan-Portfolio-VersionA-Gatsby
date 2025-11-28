@@ -1,3 +1,5 @@
+import {defineType, defineArrayMember} from 'sanity'
+
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -8,32 +10,24 @@
  *    type: 'simplePortableText'
  *  }
  */
-export default {
+export default defineType({
   title: 'Portable Text',
   name: 'simplePortableText',
   type: 'array',
   of: [
-    {
+    defineArrayMember({
       title: 'Block',
       type: 'block',
-      // Styles let you set what your user can mark up blocks with. These
-      // corrensponds with HTML tags, but you can set any title or value
-      // you want and decide how you want to deal with it where you want to
-      // use your content.
       styles: [{title: 'Normal', value: 'normal'}],
       lists: [],
-      // Marks let you mark up inline text in the block editor.
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'}
+          {title: 'Code', value: 'code'},
         ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
-        annotations: []
-      }
-    }
-  ]
-}
+        annotations: [],
+      },
+    }),
+  ],
+})

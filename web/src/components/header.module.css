@@ -2,159 +2,89 @@
 @import '../styles/custom-properties.css';
 
 .root {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: inherit;
-
-
+  background: var(--color-peach);
 }
 
 .wrapper {
   box-sizing: border-box;
-  padding: 1em;
-
+  padding: 1em 1.5em;
   display: flex;
-  position: fixed;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 
-  @media (--media-max-medium) {
-  height: 8vh;
-  position: absolute;
-  }
-
   @media (--media-min-small) {
-    padding: 1.5em 1.5em;
+    padding: 1.5em 2em;
   }
 }
 
 .branding {
   font-weight: 600;
-  flex: 1;
+  flex-shrink: 0;
 
   @nest & a {
     display: inline-block;
-    padding: 0 1.1em;
     color: inherit;
     text-decoration: none;
-
-    @media (hover: hover) {
-      @nest &:hover {
-        color: var(--color-accent);
-      }
-    }
   }
 }
 
-
-.evansProjectText{
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  padding: 1em;
-  margin-left:1.2em;
-}
-
-.aboutEvanText{
-    margin-right:1.2em;
-}
-
-.nextButton{
-    display: none;
-   bottom: 0;
-   right: 1rem;
-   position: fixed;
-   padding: 1em;
-}
-
-.aBold{
-  font-weight: 800;
-
-}
-
-
-.toggleNavButton {
-  appearance: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  margin: 0;
-  padding: calc(14 / 17 / 2 * 1rem);
-  outline: none;
-  color: inherit;
-
-  & svg {
-    display: block;
-    fill: inherit;
-  }
-
-  @media (--media-min-small) {
-    display: none;
-  }
-}
-
-.nav {
+/* Desktop navigation - hidden on mobile */
+.desktopNav {
   display: none;
 
-  @nest & ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  @nest & ul li a {
+  @media (--media-min-medium) {
     display: block;
-    color: inherit;
-    text-decoration: none;
   }
+}
 
-  @media (hover: hover) {
-    @nest & ul li a:hover {
-      color: var(--color-accent);
-    }
-  }
+.navLink {
+  font-weight: 800;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+}
 
-  @media (--media-max-small) {
-    position: absolute;
-    background: var(--color-peach);
-    color: var(--color-black);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+.firstLetter {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+.restOfText {
+  display: inline-block;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-width 0.5s ease;
+  white-space: nowrap;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+.restOfText.visible {
+  opacity: 1;
+  max-width: 200px;
+}
+
+/* Bottom left fixed navigation */
+.bottomLeftNav {
+  display: none;
+  
+  @media (--media-min-medium) {
+    display: block;
+    position: fixed;
+    bottom: 0;
     left: 0;
-    right: 0;
-    top: 4.3rem;
-
-    @nest & ul {
-      padding: 1rem 0;
-    }
-
-    @nest & ul li a {
-      padding: 0.5rem 1.5rem;
-    }
+    padding: 1.5em 2em;
+    z-index: 100;
+    background: var(--color-peach);
   }
-
-  @media (--media-min-small) {
-    display: block;
-
-    @nest & ul {
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-  }
-}
-
-.mobileNavItem{
-  @media (--media-min-small){
-    display: none !important;
-  }
-}
-
-.onlyDesktopNavItem{
-  @media (--media-max-small) {
-    display: none !important;
-  }
-}
-
-.showNav {
-  display: block;
-
 }

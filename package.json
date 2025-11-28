@@ -1,29 +1,28 @@
 {
   "private": true,
   "name": "sanity-gatsby-portfolio",
-  "version": "0.0.0",
+  "version": "2.0.0",
+  "description": "Evan Allan Portfolio - Gatsby + Sanity",
+  "workspaces": [
+    "web",
+    "studio"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
-    "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel",
-    "format": "lerna run format",
-    "build-studio": "(cd studio && npm run build)",
-    "build-web": "lerna bootstrap && (cd studio && SANITY_AUTH_TOKEN=$SANITY_DEPLOY_STUDIO_TOKEN npm run graphql-deploy) && (cd web && npm run build)",
-    "graphql-deploy": "lerna run graphql-deploy",
-    "lint": "lerna run lint",
-    "postinstall": "lerna bootstrap",
+    "build": "npm run build --workspace=web",
+    "build:studio": "npm run build --workspace=studio",
+    "build:all": "npm run build --workspaces",
+    "dev": "npm run dev --workspace=web",
+    "dev:studio": "npm run dev --workspace=studio",
+    "clean": "npm run clean --workspace=web",
+    "format": "npm run format --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "pre-deploy": "bash scripts/pre-deploy.sh",
+    "deploy:graphql": "npm run deploy-graphql --workspace=studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "lerna": "^3.13.1"
-  },
-  "dependencies": {
-    "gatsby": "^2.0.0",
-    "gatsby-plugin-typography": "^2.5.10",
-    "react": "^16.4.2",
-    "react-dom": "16.4.2",
-    "react-typography": "^0.16.19",
-    "swiper": "^6.2.0",
-    "typography": "^0.16.19",
-    "typography-theme-de-young": "^0.16.19"
-  }
+  "devDependencies": {}
 }

@@ -4,4 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// You can delete this file if you're not using it
+import React from 'react'
+
+// Add preconnect hints for faster image loading from Sanity CDN
+export const onRenderBody = ({setHeadComponents}) => {
+  setHeadComponents([
+    <link
+      key="preconnect-sanity-cdn"
+      rel="preconnect"
+      href="https://cdn.sanity.io"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-sanity"
+      rel="dns-prefetch"
+      href="https://cdn.sanity.io"
+    />,
+  ])
+}

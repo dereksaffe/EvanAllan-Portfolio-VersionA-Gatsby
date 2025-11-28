@@ -6,109 +6,109 @@ import NavbarLinks from "./navbarlinks.js"
 
 const Navigation = styled.nav`
   display: none;
-  display: flex;
-  background-color: none;
+  background-color: transparent;
   position: relative;
-  justify-content: space-between;
-  margin: 0 auto;
-  z-index: 2;
-  align-self: center;
+  z-index: 200;
 
   @media (max-width: 768px) {
-      display: flex;
-    position: sticky;
-    height: 8vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    left: 0;
+    display: block;
   }
 `
 
-const Toggle = styled.div`
+const Toggle = styled.button`
   display: none;
-  height: 100%;
   cursor: pointer;
-  padding: 0 1.2em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 201;
 
   @media (max-width: 768px) {
-    display: flex;
+    display: block;
+  }
+
+  &:focus {
+    outline: none;
   }
 `
 
 const Navbox = styled.div`
   display: none;
-  height: 100%;
-  justify-content: flex-end;
-  align-items: center;
-  font-weight: 700;
 
   @media (max-width: 768px) {
-      display: flex;
-
+    display: flex;
     flex-direction: column;
     position: fixed;
     width: 100%;
-    justify-content: flex-start;
-    padding-top: 10vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
     background-color: var(--color-peach);
-    transition: all 0.3s ease-in;
-    top: 8vh;
-    left: ${props => (props.open ? "-100%" : "0")};
+    transition: transform 0.3s ease-in-out;
+    top: 0;
+    left: 0;
+    transform: ${props => (props.open ? "translateX(-100%)" : "translateX(0)")};
+    z-index: 199;
   }
 `
 
-const Hamburger = styled.div`
-  background-color: #111;
+const Hamburger = styled.span`
+  display: block;
+  background-color: ${props => (props.open ? "transparent" : "#111")};
   width: 30px;
   height: 3px;
-  transition: all .3s linear;
-  align-self: center;
-  position: relative;
-  transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s linear;
 
-  ::before,
-  ::after {
+  &::before {
+    content: "";
+    display: block;
     width: 30px;
     height: 3px;
     background-color: #111;
-    content: "";
     position: absolute;
+    left: 0;
     transition: all 0.3s linear;
+    top: ${props => (props.open ? "0" : "-10px")};
+    transform: ${props => (props.open ? "rotate(45deg)" : "rotate(0)")};
   }
 
-  ::before {
-    transform: ${props =>
-    props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
-    top: -10px;
-  }
-
-  ::after {
-    opacity: ${props => (props.open ? "0" : "1")};
-    transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
-    top: 10px;
+  &::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #111;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s linear;
+    top: ${props => (props.open ? "0" : "10px")};
+    transform: ${props => (props.open ? "rotate(-45deg)" : "rotate(0)")};
   }
 `
+
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
     <Navigation>
       <Toggle
-        navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={navbarOpen}
       >
-        {navbarOpen ? <Hamburger open /> : <Hamburger />}
+        <Hamburger open={navbarOpen} />
       </Toggle>
-      {navbarOpen ? (
-        <Navbox>
-          <NavbarLinks />
-        </Navbox>
-      ) : (
-          <Navbox open>
-            <NavbarLinks />
-          </Navbox>
-        )}
+      <Navbox open={!navbarOpen}>
+        <NavbarLinks onLinkClick={() => setNavbarOpen(false)} />
+      </Navbox>
     </Navigation>
   )
 }

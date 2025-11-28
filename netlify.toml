@@ -1,0 +1,73 @@
+# Netlify configuration for Gatsby + Sanity Portfolio
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Base directory for the build
+  base = "web/"
+  # Build command (runs from web/ directory)
+  command = "npm install && npm run build"
+  # Publish directory (relative to base)
+  publish = "public/"
+  # Functions directory
+  functions = "netlify/functions"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+  # npm version
+  NPM_VERSION = "9"
+  # Gatsby telemetry opt-out
+  GATSBY_TELEMETRY_DISABLED = "1"
+
+# Production context
+[context.production]
+  command = "npm install && npm run build"
+  
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Deploy preview context
+[context.deploy-preview]
+  command = "npm install && npm run build"
+
+# Branch deploy context  
+[context.branch-deploy]
+  command = "npm install && npm run build"
+
+# Headers for caching and security
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/page-data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Redirects
+[[redirects]]
+  from = "/project/*"
+  to = "/project/:splat"
+  status = 200
+
+# SPA fallback for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Plugins
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+

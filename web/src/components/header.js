@@ -1,57 +1,66 @@
 import {Link} from 'gatsby'
-import React, { useState } from 'react'
-import Icon from './icon'
-import {cn} from '../lib/helpers'
+import React, {useState} from 'react'
 import Navbar from './navbar/navbar.js'
+import {useShuffle} from '../context/shuffle-context'
 
-import styles from './header.module.css'
+import * as styles from './header.module.css'
 
+const Header = ({siteTitle}) => {
+  const [isAboutHovered, setIsAboutHovered] = useState(false)
+  const [isProjectHovered, setIsProjectHovered] = useState(false)
+  const {triggerShuffle} = useShuffle()
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => {
+  const handleBrandClick = (e) => {
+    // If already on homepage, just shuffle
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      e.preventDefault()
+      triggerShuffle()
+    }
+    // Otherwise, navigate will happen naturally via Link
+  }
 
-  const [aboutText, setAbout] = useState('A');
+  return (
+    <div className={styles.root}>
+      <div className={styles.wrapper}>
+        <div className={styles.branding}>
+          <Link to="/" onClick={handleBrandClick}>{siteTitle}</Link>
+        </div>
 
-   const [projectText, setProject] = useState('E')
+        {/* Mobile hamburger menu */}
+        <Navbar />
 
-  /*const setAbout = (text) => {
-    setText(text);
-  }*/
-
-
-  return (<div className={styles.root}>
-    <div className={styles.wrapper}>
-      <div className={styles.branding}>
-        <Link to='/'>{siteTitle}</Link>
+        {/* Desktop navigation - About Evan (top right) */}
+        <nav className={styles.desktopNav}>
+          <Link
+            className={styles.navLink}
+            to="/about/"
+            onMouseEnter={() => setIsAboutHovered(true)}
+            onMouseLeave={() => setIsAboutHovered(false)}
+          >
+            <span className={styles.firstLetter}>A</span>
+            <span className={`${styles.restOfText} ${isAboutHovered ? styles.visible : ''}`}>
+              bout Evan
+            </span>
+          </Link>
+        </nav>
       </div>
 
-
-      <Navbar />
-
-
-
-
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-        <ul>
-          <li>
-            <Link className={cn(styles.aBold, styles.onlyDesktopNavItem, styles.aboutEvanText)} to='/about/' onMouseOver={() => setAbout('About Evan')}
-                                 onMouseLeave={() => setAbout('A')}>{aboutText}</Link>
-          </li>
-
-        </ul>
-      </nav>
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-      <div className={styles.evansProjectText}>
-          <Link className={cn(styles.aBold, styles.evansProjectText)} to='/archive/' onMouseOver={() => setProject("Evan's Projects")}
-          onMouseLeave={() => setProject('E')}>{projectText}</Link>
+      {/* Fixed bottom left - Projects link */}
+      <div className={styles.bottomLeftNav}>
+        <Link
+          className={styles.navLink}
+          to="/archive/"
+          onMouseEnter={() => setIsProjectHovered(true)}
+          onMouseLeave={() => setIsProjectHovered(false)}
+        >
+          <span className={styles.firstLetter}>E</span>
+          <span className={`${styles.restOfText} ${isProjectHovered ? styles.visible : ''}`}>
+            van's Projects
+          </span>
+        </Link>
       </div>
-      <div className={styles.nextButton}>
-        <h3 className={styles.aBold}>Next</h3>
-      </div>
-      </nav>
-
     </div>
-
-  </div> )
+  )
 }
 
 export default Header

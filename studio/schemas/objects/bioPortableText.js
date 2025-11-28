@@ -1,9 +1,11 @@
-export default {
+import {defineType, defineArrayMember} from 'sanity'
+
+export default defineType({
   name: 'bioPortableText',
   type: 'array',
   title: 'Excerpt',
   of: [
-    {
+    defineArrayMember({
       title: 'Block',
       type: 'block',
       styles: [{title: 'Normal', value: 'normal'}],
@@ -12,7 +14,7 @@ export default {
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'}
+          {title: 'Code', value: 'code'},
         ],
         annotations: [
           {
@@ -23,12 +25,12 @@ export default {
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url'
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+                type: 'url',
+              },
+            ],
+          },
+        ],
+      },
+    }),
+  ],
+})

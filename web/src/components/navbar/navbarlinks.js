@@ -12,39 +12,22 @@ const NavItem = styled(Link)`
   margin: 0 1vw;
   transition: all 200ms ease-in;
   position: relative;
-
-  :after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    : goldenrod;
-    height: 1px;
-    transition: all 0.4s ease-in;
-  }
-
-  /*:hover {
-    color: goldenrod;
-    ::after {
-      width: 100%;
-    }
-  } */
+  font-weight: 600;
 
   @media (max-width: 768px) {
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;
+    text-align: center;
   }
 `
-const NavbarLinks = () => {
+
+const NavbarLinks = ({onLinkClick}) => {
   return (
     <>
-      <NavItem to='/'>Home</NavItem>
-      <NavItem to='/about/'>About Evan</NavItem>
-      <NavItem to='/archive/'>Projects</NavItem>
+      <NavItem to="/" onClick={onLinkClick}>Home</NavItem>
+      <NavItem to="/about/" onClick={onLinkClick}>About Evan</NavItem>
+      <NavItem to="/archive/" onClick={onLinkClick}>Projects</NavItem>
     </>
   )
 }

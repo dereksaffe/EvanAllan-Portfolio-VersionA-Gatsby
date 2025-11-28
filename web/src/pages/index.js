@@ -1,43 +1,42 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../lib/helpers'
+import {mapEdgesToNodes} from '../lib/helpers'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
-import styles from './about.module.css'
-
-
 export const query = graphql`
-
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"})
-    {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
       description
       keywords
-     }
-      projects: allSanitySampleProject
-      (filter: {featured: {eq: true}})
-      {
-          edges {
+    }
+    projects: allSanitySampleProject(
+      filter: {featured: {eq: true}}
+      limit: 6
+    ) {
+      edges {
         node {
           id
           featured
           _rawImagesGallery
           imagesGallery {
-          _key
-          _type
-          asset {
-            id
+            _key
+            _type
+            asset {
+              _id
+              metadata {
+                dimensions {
+                  width
+                  height
+                  aspectRatio
+                }
+              }
+            }
           }
-        }
           mainImage {
             crop {
               _key
@@ -57,23 +56,29 @@ export const query = graphql`
             }
             asset {
               _id
+              metadata {
+                dimensions {
+                  width
+                  height
+                  aspectRatio
+                }
+              }
             }
             alt
           }
           title
-           slug {
-          _key
-          _type
-          current
-        }
+          slug {
+            _key
+            _type
+            current
+          }
         }
       }
-       }
     }
-
+  }
 `
 
-const IndexPage = props => {
+const IndexPage = (props) => {
   const {data, errors} = props
 
   if (errors) {
@@ -86,9 +91,7 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
-   ? mapEdgesToNodes(data.projects)
-      /*.filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture) */
+    ? mapEdgesToNodes(data.projects)
     : []
 
   if (!site) {
@@ -99,18 +102,16 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      />
       <Container>
-        <div>
         <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title='Latest projects'
-            nodes={projectNodes}
-            browseMoreHref='/archive/'
-          />
+        {projectNodes && projectNodes.length > 0 && (
+          <ProjectPreviewGrid nodes={projectNodes} />
         )}
-        </div>
       </Container>
     </Layout>
   )
