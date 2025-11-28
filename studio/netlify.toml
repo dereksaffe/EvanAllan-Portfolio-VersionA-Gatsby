@@ -1,13 +1,30 @@
 # Netlify configuration for Sanity Studio v3
 # https://docs.netlify.com/configure-builds/file-based-configuration/
+# 
+# IMPORTANT: In Netlify Dashboard, set:
+# - Base directory: studio
+# - Build command: (leave empty to use this file)
+# - Publish directory: dist
 
 [build]
-  command = "npm run build"
+  # Build command (installs dependencies first)
+  command = "npm install && npm run build"
+  # Publish directory (relative to base directory set in Netlify Dashboard)
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
+  # Node.js version (match your local setup or use 18 for compatibility)
+  NODE_VERSION = "22"
+  # npm version
+  NPM_VERSION = "10"
+  NODE_ENV = "production"
+
+# Production context
+[context.production]
+  command = "npm install && npm run build"
+
+[context.production.environment]
+  NODE_ENV = "production"
 
 # SPA routing - all routes should serve index.html
 [[redirects]]
