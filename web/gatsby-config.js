@@ -1,15 +1,28 @@
-// Load variables from `.env` if file exists (for local development)
+// Load variables from `.env` if file exists (for local development only)
 // In production, Netlify provides environment variables directly
-const dotenv = require('dotenv')
+// dotenv is optional and only needed for local development
 const fs = require('fs')
 const path = require('path')
 
-const envFile = `.env.${process.env.NODE_ENV || 'development'}`
-const envPath = path.resolve(process.cwd(), envFile)
+// Check if dotenv module is available (it's in devDependencies, may not be in production)
+let dotenv
+try {
+  require.resolve('dotenv')
+  dotenv = require('dotenv')
+} catch (e) {
+  // dotenv not available - this is fine for production
+  // Environment variables will come from Netlify or system environment
+  dotenv = null
+}
 
-// Only load .env file if it exists (for local development)
-if (fs.existsSync(envPath)) {
-  dotenv.config({ path: envFile })
+// Only load .env file if dotenv is available and file exists
+if (dotenv) {
+  const envFile = `.env.${process.env.NODE_ENV || 'development'}`
+  const envPath = path.resolve(process.cwd(), envFile)
+  
+  if (fs.existsSync(envPath)) {
+    dotenv.config({ path: envFile })
+  }
 }
 
 const clientConfig = require('./client-config')
