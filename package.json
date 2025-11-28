@@ -24,5 +24,7 @@
     "deploy:graphql": "npm run deploy-graphql --workspace=studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
 }
