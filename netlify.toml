@@ -18,6 +18,10 @@
   NPM_VERSION = "9"
   # Gatsby telemetry opt-out
   GATSBY_TELEMETRY_DISABLED = "1"
+  # Sanity configuration (with defaults)
+  GATSBY_SANITY_PROJECT_ID = "tyru08of"
+  GATSBY_SANITY_DATASET = "production"
+  NODE_ENV = "production"
 
 # Production context
 [context.production]
