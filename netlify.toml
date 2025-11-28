@@ -12,13 +12,13 @@
   functions = "netlify/functions"
 
 [build.environment]
-  # Node.js version
-  NODE_VERSION = "18"
+  # Node.js version (use 22 if that's what you installed with, or 18 for compatibility)
+  NODE_VERSION = "22"
   # npm version
-  NPM_VERSION = "9"
+  NPM_VERSION = "10"
   # Gatsby telemetry opt-out
   GATSBY_TELEMETRY_DISABLED = "1"
-  # Sanity configuration (with defaults)
+  # Sanity configuration (with defaults - these are fallbacks)
   GATSBY_SANITY_PROJECT_ID = "tyru08of"
   GATSBY_SANITY_DATASET = "production"
   NODE_ENV = "production"
