@@ -19,6 +19,7 @@ function ProjectPreview(props) {
   const isFirstRender = useRef(true)
   const imgRef = useRef(null)
 
+  
   // Safety check for required data
   if (!slug?.current || !_rawImagesGallery || _rawImagesGallery.length === 0) {
     return null
@@ -37,7 +38,7 @@ function ProjectPreview(props) {
 
   // Generate responsive image URLs with srcset
   const baseUrl = imageUrlFor(imageObj)
-  const imageUrl = baseUrl.width(800).quality(92).auto('format').url()
+  const imageUrl = baseUrl.width(1200).quality(100).auto('format').url()
 
   // Re-randomize when shuffleKey changes (but not on first render)
   useEffect(() => {
@@ -84,8 +85,8 @@ function ProjectPreview(props) {
   }, [selectedIndex, imageUrl])
   
   // Generate srcset for responsive images
-  const srcSet = [400, 600, 800, 1200]
-    .map(w => `${baseUrl.width(w).quality(92).auto('format').url()} ${w}w`)
+  const srcSet = [400, 600, 800, 1200, 1600, 2000]
+    .map(w => `${baseUrl.width(w).quality(100).auto('format').url()} ${w}w`)
     .join(', ')
 
   // Low quality placeholder - less blur
@@ -114,7 +115,7 @@ function ProjectPreview(props) {
           ref={imgRef}
           src={imageUrl}
           srcSet={srcSet}
-          sizes="(max-width: 450px) 90vw, (max-width: 768px) 45vw, (max-width: 1200px) 30vw, 400px"
+          sizes="(max-width: 450px) 90vw, (max-width: 768px) 45vw, (max-width: 1200px) 30vw, 600px"
           alt={selectedImage.alt || title || ''}
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}

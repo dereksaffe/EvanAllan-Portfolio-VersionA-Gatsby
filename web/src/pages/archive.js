@@ -89,7 +89,7 @@ const ArchivePage = (props) => {
                 ? imageUrlFor(imageObj)
                     .width(600)
                     .fit('clip')
-                    .quality(40)
+                    .quality(100)
                     .auto('format')
                     .url()
                 : null

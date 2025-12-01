@@ -18,7 +18,7 @@ function GalleryImage({image, index, priority = false}) {
 
   const imageUrl = imageUrlFor(imageObj)
     .width(1200)
-    .quality(70)
+    .quality(100)
     .auto('format')
     .url()
 
@@ -30,7 +30,7 @@ function GalleryImage({image, index, priority = false}) {
     .url()
 
   const srcSet = [400, 600, 800, 1200, 1600]
-    .map(w => `${imageUrlFor(imageObj).width(w).quality(70).auto('format').url()} ${w}w`)
+    .map(w => `${imageUrlFor(imageObj).width(w).quality(100).auto('format').url()} ${w}w`)
     .join(', ')
 
   return (

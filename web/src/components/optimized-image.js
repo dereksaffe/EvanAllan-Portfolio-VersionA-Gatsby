@@ -11,7 +11,7 @@ const OptimizedImage = ({
   alt = '',
   width = 800,
   height,
-  quality = 75,
+  quality = 100,
   loading = 'lazy',
   className = '',
   style = {},

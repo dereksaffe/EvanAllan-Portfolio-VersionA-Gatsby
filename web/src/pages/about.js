@@ -80,7 +80,7 @@ const AboutPage = (props) => {
   const profileImageUrl = imageObj
     ? imageUrlFor(imageObj)
         .width(800)
-        .quality(80)
+        .quality(100)
         .auto('format')
         .fit('crop')
         .url()

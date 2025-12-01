@@ -13,7 +13,7 @@ export default function Figure({node}) {
   // Build the image URLs
   const imageUrl = imageUrlFor(node)
     .width(1200)
-    .quality(80)
+    .quality(100)
     .auto('format')
     .url()
 
@@ -25,7 +25,7 @@ export default function Figure({node}) {
     .url()
 
   const srcSet = [400, 600, 800, 1200]
-    .map(w => `${imageUrlFor(node).width(w).quality(80).auto('format').url()} ${w}w`)
+    .map(w => `${imageUrlFor(node).width(w).quality(100).auto('format').url()} ${w}w`)
     .join(', ')
 
   return (
