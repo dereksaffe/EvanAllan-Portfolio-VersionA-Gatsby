@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--color-peach);
+  background: transparent;
 
 
 }
@@ -90,6 +90,6 @@
     left: 0;
     padding: 1.75em 2em;
     z-index: 100;
-    background: var(--color-peach);
+    background: transparent;
   }
 }
