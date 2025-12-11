@@ -24,10 +24,11 @@ function GalleryImage({image, index, priority = false}) {
 
   const lqipUrl = imageUrlFor(imageObj)
     .width(30)
-    .quality(20)
+    .quality(25)
     .blur(10)
     .auto('format')
     .url()
+
 
   const srcSet = [400, 600, 800, 1200, 1600]
     .map(w => `${imageUrlFor(imageObj).width(w).quality(100).auto('format').url()} ${w}w`)

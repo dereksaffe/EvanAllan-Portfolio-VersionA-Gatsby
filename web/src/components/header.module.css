@@ -14,8 +14,12 @@
 
 .wrapper {
   box-sizing: border-box;
+
+
   padding: 1em 1.5em;
   display: flex;
+
+  
   align-items: center;
   justify-content: space-between;
   width: 100%;
