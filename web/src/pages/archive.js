@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {graphql, Link} from 'gatsby'
 
 import Container from '../components/container'
@@ -76,11 +76,12 @@ const ArchivePage = (props) => {
 
   const site = (data || {}).site
   const projectNodes = (data || {}).projects ? mapEdgesToNodes(data.projects) : []
+  const [hoveredProjectId, setHoveredProjectId] = useState(null)
 
   return (
     <Layout>
       <SEO title={site?.title} description={site?.description} keywords={site?.keywords} />
-      <Container className={styles.root}>
+      <div className={styles.archiveWrapper}>
         <div className={styles.archiveContainer}>
           {projectNodes &&
             projectNodes.map((node) => {
@@ -95,8 +96,13 @@ const ArchivePage = (props) => {
                 : null
 
               return (
-                <ul className={styles.projectContainer} key={node.id}>
-                  <Link className={styles.root} to={`/project/${node.slug?.current}/`}>
+                <ul 
+                  className={styles.projectContainer} 
+                  key={node.id} 
+                  onMouseEnter={() => setHoveredProjectId(node.id)}
+                  onMouseLeave={() => setHoveredProjectId(null)}
+                >
+                  <Link to={`/project/${node.slug?.current}/`}>
                     <li className={typography.responsiveTitle2}>
                       <p className={styles.projectItem}>{node.title}</p>
                     </li>
@@ -107,13 +113,43 @@ const ArchivePage = (props) => {
                       src={imageUrl}
                       alt={node.mainImage?.alt || ''}
                       loading="lazy"
+                      data-project-id={node.id}
                     />
                   )}
                 </ul>
               )
             })}
         </div>
-      </Container>
+        {/* Fixed image container on the right */}
+        <div className={styles.imageRevealContainer}>
+          {projectNodes &&
+            projectNodes.map((node) => {
+              const imageObj = node.mainImage?.asset ? buildImageObj(node.mainImage) : null
+              const imageUrl = imageObj
+                ? imageUrlFor(imageObj)
+                    .width(600)
+                    .fit('clip')
+                    .quality(100)
+                    .auto('format')
+                    .url()
+                : null
+
+              if (!imageUrl) return null
+
+              const isVisible = hoveredProjectId === node.id
+
+              return (
+                <img
+                  key={node.id}
+                  src={imageUrl}
+                  alt={node.mainImage?.alt || ''}
+                  loading="lazy"
+                  className={`${styles.revealImage} ${isVisible ? styles.revealImageVisible : ''}`}
+                />
+              )
+            })}
+        </div>
+      </div>
     </Layout>
   )
 }

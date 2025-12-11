@@ -1,44 +1,135 @@
 @import '../styles/custom-media.css';
 
-.root {
-  /* Mobile: prevent overflow */
+.archiveWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: none !important;
+
+  /* Desktop: two-column layout in a row, centered vertically and horizontally */
+  @media (--media-min-medium) {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20svh !important;
+    padding: 0 !important;
+    margin-top: 10svh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Mobile and Tablet: prevent overflow, no margin-top, align to top */
   @media (--media-max-medium) {
     max-height: 100svh;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 100svh !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
   }
 }
 
 .archiveContainer{
-  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  /*max-width: 960px;*/
-  padding: 1em;
-  margin-top: 7em;
-  margin-left: 4em;
-  z-index: 999;
+  padding: 0;
+  height: auto;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 999;
+  flex-shrink: 0;
 
-  /* Mobile: prevent overflow and limit to 100svh */
+  /* Desktop: left column in row layout */
+  @media (--media-min-medium) {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    max-height: none;
+    flex-shrink: 0;
+  }
+
+  /* Mobile: prevent overflow and limit to 100svh, positioned at top */
   @media (--media-max-medium) {
     max-height: 100svh;
     height: auto;
-    margin-top: 4em;
+    margin-top: 0;
     margin-left: 1em;
     margin-right: 1em;
-    padding: 1em 0.5em;
+    margin-bottom: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     overflow-y: auto;
     overflow-x: hidden;
   }
 }
 
+/* Image reveal container - now part of centered layout */
+.imageRevealContainer {
+  display: none;
+  width: 400px;
+  max-width: 35vw;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+  position: relative;
+  min-height: 400px;
+  flex-shrink: 0;
+
+  /* Desktop: show as second column in row */
+  @media (--media-min-medium) {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  @media (--media-max-medium) {
+    display: none;
+  }
+}
+
+.revealImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  pointer-events: none;
+}
+
+.revealImageVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
 .projectContainer img{
- display: none;
+  display: none;
   max-height: 50%;
+  
+  /* Hide the original hover images on desktop - they're now in the fixed container */
+  @media (--media-min-medium) {
+    display: none !important;
+  }
 }
 
 .projectContainer p{
@@ -60,17 +151,22 @@
 }
 
 .projectContainer {
-  display:flex;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 0;
 }
 
+/* Old hover effect - now handled by fixed container */
 .projectContainer:hover img{
-   @media (--media-max-small){ display: none;}
-  display: inline-flex;
-  animation: fade_in_show 500ms;
-
-  position: absolute;
-  z-index: 1;
-  transform: translatex(500px) translateY(-100px);
+  @media (--media-max-small){ 
+    display: none;
+  }
+  
+  /* Disabled on desktop - using fixed container instead */
+  @media (--media-min-medium) {
+    display: none !important;
+  }
 }
 
 
@@ -85,5 +181,7 @@
 }
 
 .projectItem{
-  margin-bottom: 1em;
+  margin: 0;
+  padding: 0.75em 0;
+  display: block;
 }
