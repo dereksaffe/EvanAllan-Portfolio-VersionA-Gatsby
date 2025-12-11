@@ -2,12 +2,26 @@ import {defineType, defineField} from 'sanity'
 
 export default defineType({
   name: 'sampleProject',
-  title: 'Sample project',
+  title: 'Project',
   type: 'document',
   initialValue: {
     featured: false,
   },
   fields: [
+    defineField({
+      name: 'featured',
+      type: 'boolean',
+      title: 'Featured on Homepage',
+      description: 'Show this project on the homepage. You can feature 3-6 projects.',
+    }),
+    defineField({
+      name: 'homepageOrder',
+      type: 'number',
+      title: 'Homepage Display Order',
+      description: 'Order in which the project appears on the homepage (1 = first). Only applies to featured projects.',
+      validation: (Rule) => Rule.min(1).max(6).integer(),
+      hidden: ({document}) => !document?.featured,
+    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -40,20 +54,6 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'projectPortableText',
-    }),
-    defineField({
-      name: 'featured',
-      type: 'boolean',
-      title: 'Featured on Homepage',
-      description: 'Show this project on the homepage. You can feature 3-6 projects.',
-    }),
-    defineField({
-      name: 'homepageOrder',
-      type: 'number',
-      title: 'Homepage Display Order',
-      description: 'Order in which the project appears on the homepage (1 = first). Only applies to featured projects.',
-      validation: (Rule) => Rule.min(1).max(6).integer(),
-      hidden: ({document}) => !document?.featured,
     }),
   ],
   orderings: [

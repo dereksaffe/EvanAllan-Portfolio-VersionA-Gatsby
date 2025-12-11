@@ -16,9 +16,9 @@ export const deskStructure = (S: StructureBuilder) =>
         ),
       S.divider(),
       S.listItem()
-        .title('Sample Projects')
+        .title('Projects')
         .schemaType('sampleProject')
-        .child(S.documentTypeList('sampleProject').title('Sample Projects')),
+        .child(S.documentTypeList('sampleProject').title('Projects')),
       S.listItem()
         .title('People')
         .icon(MdPerson)
