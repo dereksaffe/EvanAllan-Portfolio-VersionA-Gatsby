@@ -1,29 +1,18 @@
 import {Link} from 'gatsby'
 import React, {useState} from 'react'
 import Navbar from './navbar/navbar.js'
-import {useShuffle} from '../context/shuffle-context'
 
 import * as styles from './header.module.css'
 
 const Header = ({siteTitle}) => {
   const [isAboutHovered, setIsAboutHovered] = useState(false)
   const [isProjectHovered, setIsProjectHovered] = useState(false)
-  const {triggerShuffle} = useShuffle()
-
-  const handleBrandClick = (e) => {
-    // If already on homepage, just shuffle
-    if (typeof window !== 'undefined' && window.location.pathname === '/') {
-      e.preventDefault()
-      triggerShuffle()
-    }
-    // Otherwise, navigate will happen naturally via Link
-  }
 
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <div className={styles.branding}>
-          <Link to="/" onClick={handleBrandClick}>{siteTitle}</Link>
+          <Link to="/">{siteTitle}</Link>
         </div>
 
         {/* Mobile hamburger menu */}

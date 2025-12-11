@@ -6,28 +6,14 @@ import {imageUrlFor} from '../lib/image-url'
 import * as styles from './project-preview.module.css'
 
 function ProjectPreview(props) {
-  const {slug, mainImage, title, _rawImagesGallery, imagesGallery, priority = false, shuffleKey = 0} = props
+  const {slug, mainImage, title, _rawImagesGallery, priority = false} = props
   const [isLoaded, setIsLoaded] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const [selectedIndex, setSelectedIndex] = useState(() => {
-    // Initialize with random index
-    if (_rawImagesGallery && _rawImagesGallery.length > 0) {
-      return Math.floor(Math.random() * _rawImagesGallery.length)
-    }
-    return 0
-  })
-  const isFirstRender = useRef(true)
   const imgRef = useRef(null)
 
-  
-  // Safety check for required data
-  if (!slug?.current || !_rawImagesGallery || _rawImagesGallery.length === 0) {
-    return null
-  }
+  const fallbackImage = _rawImagesGallery && _rawImagesGallery.length > 0 ? _rawImagesGallery[0] : null
+  const selectedImage = mainImage || fallbackImage
 
-  const selectedImage = _rawImagesGallery[selectedIndex] || _rawImagesGallery[0]
-
-  if (!selectedImage?.asset) {
+  if (!slug?.current || !selectedImage?.asset) {
     return null
   }
 
@@ -36,27 +22,13 @@ function ProjectPreview(props) {
     return null
   }
 
-  // Generate responsive image URLs with srcset
   const baseUrl = imageUrlFor(imageObj)
   const imageUrl = baseUrl.width(1200).quality(100).auto('format').url()
-
-  // Re-randomize when shuffleKey changes (but not on first render)
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
-
-    if (_rawImagesGallery && _rawImagesGallery.length > 0) {
-      setSelectedIndex(Math.floor(Math.random() * _rawImagesGallery.length))
-      setIsLoaded(false)
-      setHasError(false)
-    }
-  }, [shuffleKey, _rawImagesGallery])
 
   // Check if image is already loaded (cached images) and add fallback timeout
   useEffect(() => {
     let timeoutId
+    setIsLoaded(false)
     
     const checkImageLoaded = () => {
       if (imgRef.current) {
@@ -82,7 +54,7 @@ function ProjectPreview(props) {
       if (timeoutId) clearTimeout(timeoutId)
       clearTimeout(immediateTimeout)
     }
-  }, [selectedIndex, imageUrl])
+  }, [imageUrl])
   
   // Generate srcset for responsive images
   const srcSet = [400, 600, 800, 1200, 1600, 2000]
@@ -121,10 +93,8 @@ function ProjectPreview(props) {
           fetchPriority={priority ? 'high' : 'auto'}
           onLoad={() => {
             setIsLoaded(true)
-            setHasError(false)
           }}
           onError={() => {
-            setHasError(true)
             setIsLoaded(true) // Show image even if there's an error
           }}
           className={styles.mainImage}

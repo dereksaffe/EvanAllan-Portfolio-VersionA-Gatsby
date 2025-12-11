@@ -1,12 +1,10 @@
 import React from 'react'
 import ProjectPreview from './project-preview'
-import {useShuffle} from '../context/shuffle-context'
 
 import * as styles from './project-preview-grid.module.css'
 
 function ProjectPreviewGrid(props) {
   const {nodes = [], title} = props
-  const {shuffleKey} = useShuffle()
   const projectCount = nodes.length
 
   // Determine grid class based on number of projects
@@ -23,7 +21,7 @@ function ProjectPreviewGrid(props) {
       <ul className={`${styles.grid} ${getGridClass()}`}>
         {nodes.map((node, index) => (
           <li key={node.id} className={styles.gridItem}>
-            <ProjectPreview {...node} priority={index < 3} shuffleKey={shuffleKey} />
+            <ProjectPreview {...node} priority={index < 3} />
           </li>
         ))}
       </ul>

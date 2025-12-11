@@ -16,12 +16,14 @@ export const query = graphql`
     }
     projects: allSanitySampleProject(
       filter: {featured: {eq: true}}
+      sort: {fields: [homepageOrder, _createdAt], order: [ASC, DESC]}
       limit: 6
     ) {
       edges {
         node {
           id
           featured
+          homepageOrder
           _rawImagesGallery
           imagesGallery {
             _key
