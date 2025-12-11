@@ -22,6 +22,23 @@ function ProjectPreview(props) {
     return null
   }
 
+  // Calculate aspect ratio from image metadata
+  const getAspectRatio = () => {
+    const metadata = selectedImage.asset?.metadata?.dimensions
+    if (!metadata) return null
+    
+    // Use aspectRatio if available, otherwise calculate from width/height
+    if (metadata.aspectRatio) {
+      return metadata.aspectRatio
+    }
+    if (metadata.width && metadata.height) {
+      return metadata.width / metadata.height
+    }
+    return null
+  }
+  
+  const aspectRatio = getAspectRatio()
+
   const baseUrl = imageUrlFor(imageObj)
   const imageUrl = baseUrl.width(1200).quality(100).auto('format').url()
 
@@ -71,7 +88,12 @@ function ProjectPreview(props) {
 
   return (
     <Link className={styles.root} to={`/project/${slug.current}/`}>
-      <div className={styles.leadMediaThumb}>
+      <div 
+        className={styles.leadMediaThumb}
+        style={aspectRatio ? {
+          aspectRatio: aspectRatio.toString()
+        } : {}}
+      >
         {/* Background placeholder - smooth blur effect */}
         <div 
           className={styles.placeholderBg}

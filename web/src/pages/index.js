@@ -16,7 +16,6 @@ export const query = graphql`
     }
     projects: allSanitySampleProject(
       filter: {featured: {eq: true}}
-      sort: {fields: [homepageOrder, _createdAt], order: [ASC, DESC]}
       limit: 6
     ) {
       edges {
@@ -24,6 +23,7 @@ export const query = graphql`
           id
           featured
           homepageOrder
+          _createdAt
           _rawImagesGallery
           imagesGallery {
             _key
@@ -92,9 +92,29 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site
-  const projectNodes = (data || {}).projects
+  let projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
     : []
+
+  // Sort projects by homepageOrder (handle null values by putting them last)
+  projectNodes = projectNodes.sort((a, b) => {
+    const orderA = a.homepageOrder ?? 999 // Put null/undefined values last
+    const orderB = b.homepageOrder ?? 999
+    if (orderA !== orderB) {
+      return orderA - orderB
+    }
+    // If order is the same or both null, maintain original order
+    return 0
+  })
+
+  // Debug: Log project order values (remove in production)
+  if (typeof window !== 'undefined' && projectNodes.length > 0) {
+    console.log('Featured projects order:', projectNodes.map(p => ({
+      title: p.title,
+      homepageOrder: p.homepageOrder,
+      featured: p.featured
+    })))
+  }
 
   if (!site) {
     throw new Error(

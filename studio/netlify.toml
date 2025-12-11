@@ -4,12 +4,13 @@
 # IMPORTANT: In Netlify Dashboard, set:
 # - Base directory: studio
 # - Build command: (leave empty to use this file)
-# - Publish directory: dist
+# - Publish directory: (leave EMPTY - this file handles it)
 
 [build]
   # Build command (installs dependencies first)
   command = "npm install && npm run build"
-  # Publish directory (relative to base directory set in Netlify Dashboard)
+  # Publish directory (relative to base directory)
+  # Since base directory is "studio", this becomes "studio/dist" from repo root
   publish = "dist"
 
 [build.environment]

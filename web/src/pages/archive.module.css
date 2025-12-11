@@ -1,21 +1,39 @@
 @import '../styles/custom-media.css';
 
-
+.root {
+  /* Mobile: prevent overflow */
+  @media (--media-max-medium) {
+    max-height: 100svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+  }
+}
 
 .archiveContainer{
-   height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  /*max-width: 960px;*/
+  padding: 1em;
+  margin-top: 7em;
+  margin-left: 4em;
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-
-box-sizing: border-box;
-/*max-width: 960px;*/
-padding: 1em;
-margin-top: 7em;
-margin-left: 4em;
-z-index: 999;
-
-
+  /* Mobile: prevent overflow and limit to 100svh */
+  @media (--media-max-medium) {
+    max-height: 100svh;
+    height: auto;
+    margin-top: 4em;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em 0.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .projectContainer img{

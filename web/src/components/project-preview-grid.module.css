@@ -21,34 +21,41 @@
 }
 
 .grid {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: fit-content;
+  max-width: 100%;
   justify-content: center;
-  gap: 2em;
 
+  /* Desktop: 3 columns masonry-style grid with auto-sized columns */
   @media (--media-min-medium) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5em;
+    grid-template-columns: repeat(3, auto);
+    gap: 1.5rem;
+    align-items: start;
+    justify-items: center;
+    width: fit-content;
   }
 }
 
 .gridItem {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  width: fit-content;
+  height: auto;
 }
 
-/* All grid variants use same flex layout */
+/* All grid variants use same 3-column layout on desktop */
 .gridThree,
 .gridFour,
 .gridFive,
 .gridSix {
-  /* Inherits from .grid */
+  /* All use 3 columns on desktop, 1 column on mobile */
+  @media (--media-min-medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
